@@ -1,0 +1,701 @@
+Method = 'POST'
+URL = 'https://localhost:5000/v1/api/iserver/account/{accountId}/orders'
+URL = 'https://api.ibkr.com/v1/api/iserver/account/{accountId}/orders'
+
+NOTE: 
+This error suggests your JSON body is not formatted correctly (double-check the commas & brackets) or you're missing a required field like price | auxPrice | quantity | etc.
+{
+    "error": "Bad Request: Missing order parameters",
+    "statusCode": 400
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Main order types:
+-----------------
+Market (MKT)
+Limit (LMT)
+Stop (STP)
+Stop limit (STOP LMT)
+Midprice (MIDPRICE)
+Trailing Stop (TRAIL)
+Trailing Stop limit (TRAILLMT)
+Market if touched (MIT)
+Limit if touched (LIT)
+Market-on-close (MOC)
+Limit-on-close (LOC)
+Relative (RELATIVE)
+
+IB Algos:
+----------
+Adaptive (Adaptive)
+Arrival Price (ArrivalPx)
+Close Price (ClosePx)
+DarkIce (DarkIce)
+Percentage of Volume (PctVol)
+Price Variant Percentage of Volume (PctVolPx)
+Size Variant Percentage of Volume (PctVolSz)
+TWAP (Twap)
+Time Variant Percentage of Volume (PctVolTm)
+VWAP (Vwap)
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1. Market (MKT) order
+BODY = 
+{
+  "orders": [
+    {
+      "side": "BUY",
+      "quantity": 2,
+      "conid": 265598,
+      "orderType": "MKT",
+      "listingExchange": "SMART",
+      "tif": "DAY"
+      //"adaptive": true
+    }
+  ]
+}
+
+
+
+2. Limit (LMT) order
+BODY = 
+{
+  "orders": [
+    {
+      "side": "BUY",
+      "quantity": 2,
+      "conid": 265598,
+      "orderType": "LMT",
+      "listingExchange": "SMART",
+      "price": 1,
+      "tif": "DAY",
+      "outsideRTH": false
+      //"useAdaptive": true  
+    }
+  ]
+}
+
+
+
+3. Stop (STP) order
+BODY = 
+{
+  "orders": [
+    {
+      "side": "SELL",
+      "quantity": 2,
+      "conid": 265598,
+      "orderType": "STP",
+      "listingExchange": "SMART",
+      "price": 144,
+      "tif": "DAY"
+    }
+  ]
+}
+
+
+
+4. Stop limit (STOP LMT) order
+BODY = 
+{
+  "orders": [
+    {
+      "side": "SELL",
+      "quantity": 2,
+      "conid": 265598,
+      "orderType": "STP LMT",
+      "listingExchange": "SMART",
+      "price": 169,
+      "auxPrice": 170,
+      "tif": "DAY",
+      "outsideRTH": false  
+    }
+  ]
+}
+
+
+
+5. Midprice (MIDPRICE) order
+BODY = 
+{
+  "orders": [
+    {
+      "side": "BUY",
+      "quantity": 2,
+      "conid": 265598,
+      "orderType": "Midprice",
+      "listingExchange": "SMART",
+      "tif": "DAY",
+      "outsideRTH": false 
+    }
+  ]
+}
+
+
+
+6. Trailing Stop (TRAIL) order
+BODY = 
+{
+  "orders": [
+    {
+      "side": "SELL",
+      "quantity": 2,
+      "conid": 265598,
+      "orderType": "TRAIL",
+      "listingExchange": "SMART",
+      "price": 130,
+      "tif": "DAY",
+      "trailingType": "%",
+      "trailingAmt": 2,
+      "outsideRTH": false
+    }
+  ]
+}
+
+
+
+7. Trailing Stop limit (TRAILLMT) ***** order
+
+
+
+8. Market if touched (MIT) order
+BODY = 
+{
+  "orders": [
+    {
+      "side": "BUY",
+      "quantity": 2,
+      "conid": 265598,
+      "orderType": "MIT",
+      "listingExchange": "SMART",
+      "tif": "DAY",
+      "outsideRTH": false,
+      "auxPrice": 2
+    }
+  ]
+}
+
+
+
+9. Limit if touched (LIT) order
+BODY = 
+{
+  "orders": [
+    {
+      "side": "BUY",
+      "quantity": 2,
+      "conid": 265598,
+      "orderType": "LIT",
+      "listingExchange": "SMART",
+      "price": 2,
+      "tif": "DAY",
+      "outsideRTH": false,
+      "auxPrice": 1
+    }
+  ]
+}
+
+
+
+10. Market-on-close (MOC) order
+BODY =
+{
+  "orders": [
+    {
+      "side": "BUY",
+      "quantity": 2,
+      "conid": 265598,
+      "orderType": "MOC",
+      "listingExchange": "SMART",
+      "tif": "DAY"
+    }
+  ]
+}
+
+
+
+11. Limit-on-close (LOC) order
+BODY = 
+{
+  "orders": [
+    {
+      "side": "BUY",
+      "quantity": 2,
+      "conid": 265598,
+      "orderType": "LOC",
+      "listingExchange": "SMART",
+      "price": 1,
+      "tif": "DAY",
+      "outsideRTH": false
+    }
+  ]
+}
+
+
+
+12. Relative (RELATIVE) order
+BODY = 
+{
+  "orders": [
+    {
+      "side": "BUY",
+      "quantity": 2,
+      "conid": 265598,
+      "orderType": "REL",
+      "listingExchange": "SMART",
+      "price": 180,
+      "tif": "DAY",
+      "outsideRTH": false
+    }
+  ]
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
+Other (optional) order attributes:
+
+1. Bracket Order
+BODY = 
+{
+      "orders": [
+        {
+            "side": "BUY",
+            "quantity": 2,
+            "conid": 265598,
+            "orderType": "LMT",
+            "listingExchange": "SMART",
+            "price": 170,
+            //"isSingleGroup": true,
+            "outsideRTH": false,
+            "cOID": "testBRACKET",         //Required for bracket orders (cOID is used for the parent order)
+            "tif": "DAY"
+        },
+        {
+            "side": "SELL",
+            "quantity": 2,
+            "conid": 265598,
+            "orderType": "STP",
+            "listingExchange": "SMART",
+            "price": 165,
+            "outsideRTH": false,
+            "parentId": "testBRACKET",      //Required for bracket orders (parentId is used for the child orders)
+            "tif": "DAY"
+        },
+        {
+            "side": "SELL",
+            "quantity": 2,
+            "conid": 265598,
+            "orderType": "LMT",
+            "listingExchange": "SMART",
+            "price": 180,
+            "outsideRTH": false,
+            "parentId": "testBRACKET",      //Required for bracket orders (parentId is used for the child orders)
+            "tif": "DAY"
+        }
+    ]
+}
+
+
+
+2. OCA Order
+BODY = 
+{
+      "orders": [
+        {
+            "side": "SELL",
+            "quantity": 2,
+            "conid": 265598,
+            "orderType": "STP",
+            "listingExchange": "SMART",
+            "price": 165,
+            "outsideRTH": false,
+            "isSingleGroup": true,      //Required for OCA orders
+            "tif": "DAY"
+        },
+        {
+            "side": "SELL",
+            "quantity": 2,
+            "conid": 265598,
+            "orderType": "LMT",
+            "listingExchange": "SMART",
+            "price": 180,
+            "outsideRTH": false,
+            "isSingleGroup": true,      //Required for OCA orders
+            "tif": "DAY"
+        }
+    ]
+}
+
+
+
+3. LMT order (outside of regular trading hours)
+BODY = 
+{
+  "orders": [
+    {
+      "side": "BUY",
+      "quantity": 2,
+      "conid": 265598,
+      "orderType": "LMT",
+      "listingExchange": "SMART",
+      "price": 1,
+      "tif": "DAY",
+      "outsideRTH": true
+      //"useAdaptive": true  
+    }
+  ]
+}
+
+
+
+4. cashQty order
+BODY = 
+{
+  "orders": [
+    {
+      "side": "BUY",
+      "cashQty": 1000,
+      "conid": 265598,
+      "orderType": "LMT",
+      "listingExchange": "SMART",
+      "price": 1,
+      "tif": "DAY",
+      "outsideRTH": false
+    }
+  ]
+}
+
+
+
+
+5. Adaptive LMT (or MKT) order 
+BODY = 
+{
+  "orders": [
+    {
+      "side": "BUY",
+      "quantity": 2,
+      "conid": 265598,
+      "orderType": "LMT",
+      "listingExchange": "SMART",
+      "price": 1,
+      "tif": "DAY",
+      "outsideRTH": false,
+      "useAdaptive": true  
+    }
+  ]
+}
+
+
+
+6. Options spread order
+{
+  "orders": [
+    {
+      "side": "BUY",
+      "quantity": 2,
+      "conidex": "28812380;;;653073040/1,653076420/-1",                               //see: https://ibkrcampus.com/ibkr-api-page/webapi-doc/#combo-orders
+      //"conidex": "28812380;;;653073040/1,653076420/-1,653073171/1,653076542/-1",    //Switch from 2 to 4-leg spread
+      "orderType": "MKT",
+      "listingExchange": "SMART",
+      //"price": 1,
+      "tif": "DAY"
+    }
+  ]
+}
+
+
+
+7. Futures spread order (ES)
+{
+  "orders": [
+    {
+      "side": "BUY",
+      "quantity": 2,
+      "conidex": "28812380;;;649180666/1,649180690/-1",                            //see: https://ibkrcampus.com/ibkr-api-page/webapi-doc/#combo-orders
+      "orderType": "LMT",
+      "listingExchange": "CME",
+      "price": 1,
+      "tif": "DAY"
+    }
+  ]
+}
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
+
+IB Algo order types:
+---------------------
+1. Adaptive (Adaptive)
+BODY = 
+{
+    "orders": [
+        {
+            "side": "BUY",
+            "quantity": 2,
+            "conid": 265598,
+            "orderType": "LMT",
+            "listingExchange": "SMART",
+            "price": 1,
+            "tif": "DAY",
+            "strategy": "Adaptive",
+            "strategyParameters": { 
+                "adaptivePriority":"Urgent"       //Required 
+                //"startTime": "13:01:00 EST",
+                //"endTime": "15:00:00 EST"
+            }
+     }
+    ]
+}
+
+
+
+2. Arrival Price (ArrivalPx)
+BODY = 
+{
+    "orders": [
+        {
+            "side": "BUY",
+            "quantity": 2,
+            "conid": 265598,
+            "orderType": "LMT",
+            "listingExchange": "SMART",
+            "price": 1,
+            "tif": "DAY",
+            "strategy": "ArrivalPx",
+            "strategyParameters": { 
+                "riskAversion": "Neutral",       //Required 
+                //"allowPastEndTime": false, 
+                //"forceCompletion": false,
+                "maxPctVol": 5,                  //Required
+                //"startTime":"13:01:00 EST",
+                //"endTime": "15:00:00 EST"
+            }
+     }
+    ]
+}
+
+
+3. Close Price (ClosePx)
+BODY = 
+{
+    "orders": [
+        {
+            "side": "BUY",
+            "quantity": 2,
+            "conid": 265598,
+            "orderType": "LMT",
+            "listingExchange": "SMART",
+            "price": 1,
+            "tif": "DAY",
+            "strategy": "ClosePx",
+            "strategyParameters": { 
+                "riskAversion": "Neutral",       //Required 
+                //"forceCompletion": false,
+                "maxPctVol": 5                   //Required
+                //"startTime":"13:01:00 EST"
+            }
+     }
+    ]
+}
+
+
+
+4. DarkIce (DarkIce)
+BODY = 
+{
+    "orders": [
+        {
+            "side": "BUY",
+            "quantity": 2,
+            "conid": 265598,
+            "orderType": "LMT",
+            "listingExchange": "SMART",
+            "price": 1,
+            "tif": "DAY",
+            "strategy": "DarkIce",
+            "strategyParameters": { 
+                //"allowPastEndTime":false,
+                "displaySize": 2
+                //"startTime":"13:01:00 EST"
+                //"endTime": "15:00:00 EST"
+
+            }
+     }
+    ]
+}
+
+
+
+5. Percentage of Volume (PctVol)
+BODY = 
+{
+    "orders": [
+        {
+            "side": "BUY",
+            "quantity": 2,
+            "conid": 265598,
+            "orderType": "LMT",
+            "listingExchange": "SMART",
+            "price": 2,
+            "tif": "DAY",
+            "strategy": "PctVol",
+            "strategyParameters": {
+                //"noTakeLiq": false,
+                //"includeBlockTrades": false,
+                "pctVol": 2                       //Required 
+                //"conditionalPrice": 2,
+                //"startTime": "13:01:00 EST",
+                //"endTime": "15:00:00 EST"
+            }
+     }
+    ]
+}
+
+
+
+6. Price Variant Percentage of Volume (PctVolPx)
+BODY = 
+{
+    "orders": [
+        {
+            "side": "BUY",
+            "quantity": 2,
+            "conid": 265598,
+            "orderType": "LMT",
+            "listingExchange": "SMART",
+            "price": 2,
+            "tif": "DAY",
+            "strategy": "PctVolPx",
+            "quantity":1,
+            "strategyParameters": {
+                "minPctVol4Px": 5,                //Required 
+                //"noTakeLiq": false,
+                //"includeBlockTrades": false,
+                "pctVol": 2,                      //Required 
+                "deltaPctVol": 2                  //Required 
+                //"conditionalPrice": 2,
+                //"startTime":"13:01:00 EST",
+                //"endTime": "15:00:00 EST"
+            }
+     }
+    ]
+}
+
+
+
+7. Size Variant Percentage of Volume (PctVolSz)
+BODY = 
+{
+    "orders": [
+        {
+            "side": "BUY",
+            "quantity": 2,
+            "conid": 265598,
+            "orderType": "LMT",
+            "listingExchange": "SMART",
+            "price": 2,
+            "tif": "DAY",
+            "strategy": "PctVolSz",
+            "quantity":1,
+            "strategyParameters": {
+                //"noTakeLiq": false,
+                "startPctVol": 5,               //Required 
+                "endPctVol": 10                 //Required 
+                //"includeBlockTrades": false,
+                //"conditionalPrice": 2,
+                //"startTime":"13:01:00 EST",
+                //"endTime": "15:00:00 EST"
+            }
+     }
+    ]
+}
+
+
+
+8. TWAP (Twap)
+BODY = 
+{
+    "orders": [
+        {
+            "side": "BUY",
+            "quantity": 2,
+            "conid": 265598,
+            "orderType": "LMT",
+            "listingExchange": "SMART",
+            "price": 2,
+            "tif": "DAY",
+            "strategy": "TWAP",
+            "strategyParameters": { 
+                //"allowPastEndTime": false
+                //"conditionalPrice": 2,
+                "catchUp": false
+                //"startTime":"13:01:00 EST",
+                //"endTime": "15:00:00 EST"
+            }
+     }
+    ]
+}
+
+
+9. Time Variant Percentage of Volume (PctVolTm)
+BODY = 
+{
+    "orders": [
+        {
+            "side": "BUY",
+            "quantity": 2,
+            "conid": 265598,
+            "orderType": "LMT",
+            "listingExchange": "SMART",
+            "price": 2,
+            "tif": "DAY",
+            "strategy": "PctVolTm",
+            "quantity":1,
+            "strategyParameters": {
+                //"noTakeLiq": false,
+                "startPctVol": 5,                //Required 
+                "endPctVol": 10                  //Required 
+                //"includeBlockTrades": false,
+                //"conditionalPrice": 2,
+                //"startTime":"13:01:00 EST",
+                //"endTime": "15:00:00 EST"
+            }
+     }
+    ]
+}
+
+
+
+10. VWAP (Vwap)
+BODY = 
+{
+    "orders": [
+        {
+            "side": "BUY",
+            "quantity": 2,
+            "conid": 265598,
+            "orderType": "LMT",
+            "listingExchange": "SMART",
+            "price": 2,
+            "tif": "DAY",
+            "strategy": "VWAP",
+            "quantity":1,
+            "strategyParameters": {
+                "noTakeLiq": false
+                //"optoutClosingAuction": false,
+                //"allowPastEndTime": false,
+                //"speedUp": false,
+                //"conditionalPrice": 2,
+                //"maxPctVol": 5,
+                //"startTime": "13:00:00 EST"
+                //"endTime": "15:00:00 EST"
+            }
+     }
+    ]
+}
+
+
+
+
