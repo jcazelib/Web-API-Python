@@ -2,6 +2,8 @@ Method = 'POST'
 URL = 'https://localhost:5000/v1/api/iserver/account/{accountId}/orders'
 URL = 'https://api.ibkr.com/v1/api/iserver/account/{accountId}/orders'
 
+Link = https://ibkrcampus.com/ibkr-api-page/webapi-doc/#place-order
+
 NOTE: 
 This error suggests your JSON body is not formatted correctly (double-check the commas & brackets) or you're missing a required field like price | auxPrice | quantity | etc.
 {
