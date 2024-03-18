@@ -1,15 +1,24 @@
-Method = 'POST'
-URL = 'https://localhost:5000/v1/api/iserver/account/{accountId}/orders'
-URL = 'https://api.ibkr.com/v1/api/iserver/account/{accountId}/orders'
+Relevant Endpoints:
+--------------------
+GET  /iserver/contract/{{conid}}/info-and-rules   ->  used to check available order types for a given CONID
+   i.e. https://localhost:5000/v1/api/iserver/contract/265598/info-and-rules?isBuy=true
+   i.e. https://api.ibkr.com/v1/api/iserver/contract/265598/info-and-rules?isBuy=true
+
+GET  /iserver/contract/{{conid}}/algos   ->  used to check available IBALGO order types for a given CONID
+   i.e. https://localhost:5000/v1/api/iserver/contract/265598/algos?addDescription=1&addParams=1
+   i.e. https://api.ibkr.com/v1/api/iserver/contract/265598/algos?addDescription=1&addParams=1
 
 Link = https://ibkrcampus.com/ibkr-api-page/webapi-doc/#place-order
 
+
 NOTE: 
+-------
 This error suggests your JSON body is not formatted correctly (double-check the commas & brackets) or you're missing a required field like price | auxPrice | quantity | etc.
 {
     "error": "Bad Request: Missing order parameters",
     "statusCode": 400
 }
+
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 SECTIONS:
