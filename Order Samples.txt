@@ -8,7 +8,7 @@ GET  /iserver/contract/{{conid}}/algos   ->  used to check available IBALGO orde
    i.e. https://localhost:5000/v1/api/iserver/contract/265598/algos?addDescription=1&addParams=1
    i.e. https://api.ibkr.com/v1/api/iserver/contract/265598/algos?addDescription=1&addParams=1
 
-Link = https://ibkrcampus.com/ibkr-api-page/webapi-doc/#place-order
+Link = https://ibkrcampus.com/ibkr-api-page/cpapi-v1/#place-order
 
 
 NOTE: 
