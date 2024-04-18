@@ -10,7 +10,6 @@ GET  /iserver/contract/{{conid}}/algos   ->  used to check available IBALGO orde
 
 Link = https://ibkrcampus.com/ibkr-api-page/cpapi-v1/#place-order
 
-
 NOTE: 
 -------
 This error suggests your JSON body is not formatted correctly (double-check the commas & brackets) or you're missing a required field like price | auxPrice | quantity | etc.
@@ -18,7 +17,6 @@ This error suggests your JSON body is not formatted correctly (double-check the 
     "error": "Bad Request: Missing order parameters",
     "statusCode": 400
 }
-
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 SECTIONS:
