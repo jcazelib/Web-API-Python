@@ -68,6 +68,11 @@ VWAP (Vwap)
 
 - MAIN Order types - 
 
+Method = POST 
+CP Gateway URL =  https://localhost:5000/v1/api/iserver/account/{accountId}/orders
+OAuth URL =       https://api.ibkr.com/v1/api/iserver/account/{accountId}/orders
+
+
 1. Market (MKT) order
 BODY = 
 {
