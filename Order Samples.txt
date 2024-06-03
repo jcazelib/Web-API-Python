@@ -662,7 +662,7 @@ BODY =
             "listingExchange": "SMART",
             "price": 2,
             "tif": "DAY",
-            "strategy": "TWAP",
+            "strategy": "Twap",
             "strategyParameters": { 
                 //"allowPastEndTime": false
                 //"conditionalPrice": 2,
@@ -716,7 +716,7 @@ BODY =
             "listingExchange": "SMART",
             "price": 2,
             "tif": "DAY",
-            "strategy": "VWAP",
+            "strategy": "Vwap",
             "quantity":1,
             "strategyParameters": {
                 "noTakeLiq": false
