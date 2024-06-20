@@ -431,7 +431,7 @@ BODY =
     {
       "side": "BUY",
       "quantity": 2,
-      "conidex": "28812380;;;653073040/1,653076420/-1",                               //see: https://ibkrcampus.com/ibkr-api-page/webapi-doc/#combo-orders
+      "conidex": "28812380;;;653073040/1,653076420/-1",                               //see: https://ibkrcampus.com/ibkr-api-page/webapi-doc/#orders-for-combosspreads-31
       //"conidex": "28812380;;;653073040/1,653076420/-1,653073171/1,653076542/-1",    //Switch from 2 to 4-leg spread
       "orderType": "MKT",
       "listingExchange": "SMART",
@@ -449,7 +449,7 @@ BODY =
     {
       "side": "BUY",
       "quantity": 2,
-      "conidex": "28812380;;;649180666/1,649180690/-1",                            //see: https://ibkrcampus.com/ibkr-api-page/webapi-doc/#combo-orders
+      "conidex": "28812380;;;649180666/1,649180690/-1",                            //see: https://ibkrcampus.com/ibkr-api-page/webapi-doc/#orders-for-combosspreads-31
       "orderType": "LMT",
       "listingExchange": "CME",
       "price": 1,
