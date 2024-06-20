@@ -35,7 +35,7 @@ Market if touched (MIT)
 Limit if touched (LIT)
 Market-on-close (MOC)
 Limit-on-close (LOC)
-Relative (RELATIVE)
+Relative (REL)
 
 
 Other (optional) order attributes:
