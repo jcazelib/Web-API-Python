@@ -1,7 +1,8 @@
 """
 Python script used for testing the available CP API endpoints - https://ibkrcampus.com/ibkr-api-page/cpapi-v1/#endpoints       |   For Websocket samples, please refer to - https://github.com/awiseib/Python-CPAPI-Library/tree/main/Websockets
 
-Initial set-up instructions - https://ibkrcampus.com/ibkr-api-page/cpapi-v1/#get-started
+This script assumes you've logged into the Client Portal API gateway (either the IBKR Live/Paper account at localhost:5000) and received "Client Login Succeeds"
+    Initial set-up instructions - https://ibkrcampus.com/ibkr-api-page/cpapi-v1/#get-started
 
 This script breaks-down the CP API endpoints into the following sections:
     SESSION | ACCOUNT  | CONTRACT | OPTION/FUTURES CHAIN | FINANCIAL ADVISOR OPERATIONS
