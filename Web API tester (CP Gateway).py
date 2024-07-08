@@ -11,12 +11,6 @@ This script breaks-down the CP API endpoints into the following sections:
 
 import json
 import requests
-import random
-import base64
-import pprint
-from datetime import datetime
-from urllib.parse import quote, quote_plus
-from Crypto.Hash import SHA256, HMAC, SHA1
 
 #==================================================================================================================
 #-=-=-=-==---=-=-=-=-======-==-=-=-=-==--=-=-INPUTS-==-=-=-===-=-==-=-=-=-----=-=-=-=-==-=-=-====-=-=-===-=-==---=
