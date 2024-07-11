@@ -1,0 +1,22 @@
+- Public & Private Signing Key - 
+openssl genrsa -out private_signature.pem 2048		
+openssl rsa -in private_signature.pem -outform PEM -pubout -out public_signature.pem 		
+		
+
+- Public & Private Encryption Key - 
+openssl genrsa -out private_encryption.pem 2048		
+openssl rsa -in private_encryption.pem -outform PEM -pubout -out public_encryption.pem		
+		
+
+- Diffie-Hellman Parameters - 
+openssl dhparam -outform PEM -out dhparam.pem 2048 		
+		
+
+- DH Prime  (513 characters long) - 
+openssl asn1parse -in dhparam.pem		
+
+
+
+NOTE: 
+requires openssl version 3.0+
+$openssl version
