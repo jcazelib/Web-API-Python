@@ -228,10 +228,10 @@ replybody = []
 #     "name": "CashEq2",
 #     "accounts": [
 #         {
-#             "name": "DU12345"
+#             "name": "DUXXXX123"
 #         },
 #         {
-#             "name": "DU12346"
+#             "name": "DUXXXX124"
 #         }
 #     ],
 #     "default_method": "E"
@@ -246,11 +246,11 @@ replybody = []
 #     "accounts": [
 #         {
 #             "amount": 2,
-#             "name": "DU12345"
+#             "name": "DUXXXX123"
 #         },
 #         {
 #             "amount": 1,
-#             "name": "DU1236"
+#             "name": "DUXXXX124"
 #         }
 #     ],
 #     "default_method": "C"
