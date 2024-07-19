@@ -23,7 +23,7 @@ from Crypto.Hash import SHA256, HMAC, SHA1
 #==================================================================================================================
 consumer_key = "YOURCONSUMER"
 access_token = "ACCESSTOKEN"
-live_session_token = "LIVESESSIONTOKEN="
+live_session_token = "LIVESESSIONTOKEN"
 
 baseURL = "api.ibkr.com"
 accountId = "ACCOUNTID"
