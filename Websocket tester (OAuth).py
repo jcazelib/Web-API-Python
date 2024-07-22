@@ -2,9 +2,9 @@
 Python script used for testing Websockets via CP API - https://ibkrcampus.com/ibkr-api-page/cpapi-v1/#websockets   |   Certain requests like sbd+{} ssd+{} and sld+{} will require the IBKR Account ID {accountId} be included 
 
 This script assumes you've already received a Live Session Token, Access Token, & then Initiated a Brokerage Session  [POST https://api.ibkr.com/v1/api/iserver/auth/ssodh/init?publish=true&compete=true]
-    Lines 24 - 26: Enter your consumer_key | access_token | live_session_token | (optional) accountId which is the U-account or DU-account number
+    Lines 24 - 27: Enter your consumer_key | access_token | live_session_token | (optional) accountId which is the U-account or DU-account number
 
-The Websocket request to send is specified in line 115:
+The Websocket request to send is specified in line 116:
     ws.send('smd+12087792+{"fields":["84","85","86","88","7219"]}')    
 """
 
@@ -24,7 +24,7 @@ import time
 consumer_key = "YOURCONSUMER"
 access_token = "ACCESSTOKEN"
 live_session_token = "LIVESESSIONTOKEN"
-accountId = "accountId"
+accountId = "ACCOUNTID"
 
 
 #====================================================================================================================
@@ -112,9 +112,8 @@ def on_open(ws):
     print("-----------------")
     time.sleep(1)
     
-    
-    ##### Send the ws request (Market data / Order Updates / PnL / etc.) #####            #Specify the Websocket request - https://ibkrcampus.com/ibkr-api-page/cpapi-v1/#websockets
-    ws.send('smd+12087792+{"fields":["84","85","86","88","7219"]}')                       #Available Market Data fields  - https://ibkrcampus.com/ibkr-api-page/cpapi-v1/#market-data-fields   
+    ##### Send the ws request (Market data / Order Updates / PnL / etc.) #####                 #Specify the Websocket request - https://ibkrcampus.com/ibkr-api-page/cpapi-v1/#websockets
+    ws.send('smd+12087792+{"fields":["84","85","86","88","7219"]}')                            #Available Market Data fields  - https://ibkrcampus.com/ibkr-api-page/cpapi-v1/#market-data-fields   
     #ws.send(f'sbd+{accountId}+12087792+IDEALPRO')          
     #ws.send('smh+265598+{"period": "1d","bar": "1min","source": "trades","format": "%o/%c/%h/%l"}')           
       
@@ -133,7 +132,7 @@ def on_open(ws):
     #     string2 = f'{item}'
     #     string3 = '+{"fields":["84","85","86","88","7219"]}'
     #     smdreq = string1+string2+string3
-    #     print("smd request = ", smdreq)                                                   #Print the CONID+smd request we're making via Websocket
+    #     print("smd request = ", smdreq)                                                         #Print the CONID+smd request we're making via Websocket
     
     #     ws.send(smdreq)                                         
     #     time.sleep(0.5)
@@ -159,7 +158,7 @@ if __name__ == "__main__":
         on_message=on_message,
         on_error=on_error,
         on_close=on_close,
-        header=["User-Agent: python/3.8"],
+        header=["User-Agent: python/3.11"],
         cookie=f"api={TICKLE_COOKIE}"
     )
     ws.run_forever()
