@@ -61,6 +61,7 @@ Size Variant Percentage of Volume (PctVolSz)
 TWAP (Twap)
 Time Variant Percentage of Volume (PctVolTm)
 VWAP (Vwap)
++ Cryptocurrency order samples
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -730,6 +731,82 @@ BODY =
      }
     ]
 }
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+- CRYPTO orders - 
+
+1. BUY BTC @ MKT
+Body = 
+{
+  "orders": [
+    {
+      "side": "BUY",
+      "cashQty":10,               //Either quantity or cashQty Ok for BUY orders?
+      "conid": 479624278,
+      "orderType": "MKT",
+      "listingExchange": "PAXOS",
+      "tif": "IOC",                //IOC only?
+      "outsideRTH": false
+    }
+  ]
+}
+
+
+
+2. BUY BTC @ LMT 1
+Body = 
+{
+  "orders": [
+    {
+      "side": "BUY",
+      "quantity": 1,
+      "conid": 479624278,
+      "orderType": "LMT",
+      "price": 1,
+      "listingExchange": "PAXOS",
+      "tif": "IOC",                //IOC only?
+      "outsideRTH": false
+    }
+  ]
+}
+
+
+
+3. SELL BTC @ MKT
+Body = 
+{
+  "orders": [
+    {
+      "side": "SELL",
+      "quantity":0.001,            //Quantity MUST be used for SELL orders, no cashQty
+      "conid": 479624278,
+      "orderType": "MKT",
+      "listingExchange": "PAXOS",
+      "tif": "IOC",                //IOC only?
+      "outsideRTH": false
+    }
+  ]
+}
+
+
+4. SELL BTC @ LMT 70000
+Body = 
+{
+  "orders": [
+    {
+      "side": "SELL",
+      "quantity": 0.001,            //Quantity MUST be used for SELL orders, no cashQty
+      "conid": 479624278,
+      "orderType": "LMT",
+      "price": 70000,
+      "listingExchange": "PAXOS",
+      "tif": "IOC",                //IOC only?
+      "outsideRTH": false
+    }
+  ]
+}
+
+
 
 
 
