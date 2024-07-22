@@ -736,7 +736,7 @@ BODY =
 - CRYPTO orders - 
 
 1. BUY BTC @ MKT
-Body = 
+BODY = 
 {
   "orders": [
     {
@@ -754,7 +754,7 @@ Body =
 
 
 2. BUY BTC @ LMT 1
-Body = 
+BODY = 
 {
   "orders": [
     {
@@ -773,7 +773,7 @@ Body =
 
 
 3. SELL BTC @ MKT
-Body = 
+BODY = 
 {
   "orders": [
     {
@@ -790,7 +790,7 @@ Body =
 
 
 4. SELL BTC @ LMT 70000
-Body = 
+BODY = 
 {
   "orders": [
     {
@@ -805,9 +805,5 @@ Body =
     }
   ]
 }
-
-
-
-
 
 
