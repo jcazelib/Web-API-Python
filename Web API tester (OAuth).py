@@ -1,8 +1,8 @@
 """
-Python script used for testing the available CP API endpoints - https://ibkrcampus.com/ibkr-api-page/cpapi-v1/#endpoints         |     For Websocket samples, please refer to - https://github.com/awiseib/Python-CPAPI-Library/tree/main/Websockets | https://github.com/awiseib/Python-CPAPI-Library/tree/main/OAuth/First%20Party   
+Python script used for testing the available CP API endpoints - https://ibkrcampus.com/ibkr-api-page/cpapi-v1/#endpoints     |    For Websocket samples, please refer to - https://github.com/awiseib/Python-CPAPI-Library/tree/main/Websockets | https://github.com/awiseib/Python-CPAPI-Library/tree/main/OAuth/First%20Party   
 
 This script assumes you've already received a Live Session Token & Access Token
-    Lines 24 - 29: Enter your consumer_key | access_token | live_session_token | (optional) accountId which is the U-account or DU-account number
+    Lines 24 - 27: Enter your consumer_key | access_token | live_session_token | (optional) accountId which is the U-account or DU-account number
 
 This script breaks-down the CP API endpoints into the following sections:
     SESSION | ACCOUNT  | CONTRACT | OPTION/FUTURES CHAIN | FINANCIAL ADVISOR OPERATIONS
@@ -24,8 +24,6 @@ from Crypto.Hash import SHA256, HMAC, SHA1
 consumer_key = "YOURCONSUMER"
 access_token = "ACCESSTOKEN"
 live_session_token = "LIVESESSIONTOKEN"
-
-baseURL = "api.ibkr.com"
 accountId = "ACCOUNTID"
 
 
@@ -33,6 +31,7 @@ accountId = "ACCOUNTID"
 #-=-=-=-==---=-=-=-=-======-==-=-=-=-==--=-=-SESSION-==-=-=-===-=-==-=-=-=-----=-=-=-=-==-=-=-====-=-=-===-=-==---=
 #==================================================================================================================
 ##### Comment or uncomment the method & url which you'd like to test below #####
+baseURL = "api.ibkr.com"
 
 method = 'GET'
 url = f'https://{baseURL}/v1/api/portfolio/accounts'
@@ -645,14 +644,14 @@ if len(body) == 0 and len(replybody) == 0:
     print(pretty_request_response(accounts_response))
 
 
-##### Certain POST requests will request json body, set to body in this script #####
+##### Certain POST requests will request json body, set to 'body' in this script #####
 if len(body) > 0:
     accounts_request = requests.Request(method=method, url=url, headers=headers, json=body)
     accounts_response = session_object.send(accounts_request.prepare())
     print(pretty_request_response(accounts_response))
     
 
-##### Used to send the  POST /iserver/reply/{{replyId}} endpoint - https://ibkrcampus.com/ibkr-api-page/cpapi-v1/#place-order-reply #####
+##### To send the POST /iserver/reply/{{replyId}} endpoint - https://ibkrcampus.com/ibkr-api-page/cpapi-v1/#place-order-reply #####
 if len(replybody) > 0:
     print("sending Reply Order Endpoint:")
     accounts_request = requests.Request(method=method, url=url, headers=headers, json=replybody)
