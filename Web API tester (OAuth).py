@@ -25,13 +25,14 @@ consumer_key = "YOURCONSUMER"
 access_token = "ACCESSTOKEN"
 live_session_token = "LIVESESSIONTOKEN"
 accountId = "ACCOUNTID"
+baseURL = "api.ibkr.com"
 
 
 #==================================================================================================================
 #-=-=-=-==---=-=-=-=-======-==-=-=-=-==--=-=-SESSION-==-=-=-===-=-==-=-=-=-----=-=-=-=-==-=-=-====-=-=-===-=-==---=
 #==================================================================================================================
 ##### Comment or uncomment the endpoint which you'd like to test below #####
-baseURL = "api.ibkr.com"
+
 
 method = 'GET'
 url = f'https://{baseURL}/v1/api/portfolio/accounts'
