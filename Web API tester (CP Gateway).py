@@ -44,8 +44,8 @@ url = f'https://{baseURL}/v1/api/portfolio/accounts'
 # method = 'GET'
 # url = f'https://{baseURL}/v1/api/tickle'
 
-body = []
-replybody = []
+body = {}
+replybody = {}
 
 # method = 'POST'                                                                #Another way to call ssodh/init
 # url = f'https://{baseURL}/v1/api/iserver/auth/ssodh/init'
