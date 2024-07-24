@@ -3,7 +3,7 @@ IBKR Python WebAPI Samples
 Author - 
 John Cazel / jcazelib  |  https://github.com/jcazelib 
 
-Documnetation - 
+Documentation - 
 https://ibkrcampus.com/ibkr-api-page/cpapi-v1/
 
 Purpose -
