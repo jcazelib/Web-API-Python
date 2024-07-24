@@ -11,6 +11,8 @@ This script breaks-down the CP API endpoints into the following sections:
 
 import json
 import requests
+import urllib3                                                                               #(Optional) for added cleanliness
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)                          #(Optional) for added cleanliness
 
 #==================================================================================================================
 #-=-=-=-==---=-=-=-=-======-==-=-=-=-==--=-=-INPUTS-==-=-=-===-=-==-=-=-=-----=-=-=-=-==-=-=-====-=-=-===-=-==---=
@@ -564,17 +566,6 @@ replybody = []
 # method = 'DELETE'
 # alertId = '1132135167'
 # url = f'https://{baseURL}/v1/api/iserver/account/{accountId}/alert/{alertId}'        
-
-
-#====================================================================================================================
-#-=-=-=-==---=-=-=-=-======-==-=-=-=-==--=-=-CP Gateway=-===-=-==-=-=-=-----=-=-=-=-==-=-=-====-=-=-====-=-=-===--=-=
-#====================================================================================================================
-headers = {"User-Agent": "python/3.11"}
-
-##### OPTIONAL - for added cleanliness:
-import urllib3
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-
 
 
 #====================================================================================================================
