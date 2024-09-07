@@ -296,7 +296,7 @@ replybody = {}
 # orders = [
 #         {
 #             "conid": conid,
-#             "orderType": "STP",
+#             "orderType": "LMT",
 #             "outsideRTH": False,
 #             "price": 1,
 #             "side": "BUY",
@@ -331,7 +331,7 @@ replybody = {}
 #             "conid": conid,
 #             "orderType": "LMT",
 #             "outsideRTH": False,
-#             "price": 100,
+#             "price": 1,
 #             "side": "BUY",
 #             "tif": "GTC",
 #             "quantity": 1
