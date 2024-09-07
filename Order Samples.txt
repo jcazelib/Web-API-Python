@@ -47,7 +47,7 @@ Other (optional) order attributes:
 2. OCA Order
 3. LMT order (outside of regular trading hours)
 4. cashQty order
-5. Adaptive LMT (or MKT) order 
+5. Adaptive LMT (or Market) order 
 6. Options spread order
 7. Futures spread order (ES)
 
@@ -412,7 +412,7 @@ BODY =
 
 
 
-5. Adaptive LMT (or MKT) order 
+5. Adaptive LMT (or Market/MKT) order 
 BODY = 
 {
   "orders": [
@@ -440,7 +440,7 @@ BODY =
       "quantity": 2,
       "conidex": "28812380;;;653073040/1,653076420/-1",                               //see: https://ibkrcampus.com/ibkr-api-page/webapi-doc/#orders-for-combosspreads-31
       //"conidex": "28812380;;;653073040/1,653076420/-1,653073171/1,653076542/-1",    //Switch from 2 to 4-leg spread
-      "orderType": "MKT",
+      "orderType": "LMT",
       "listingExchange": "SMART",
       //"price": 1,
       "tif": "DAY"
@@ -742,7 +742,7 @@ BODY =
 ==================================================================================================================
 -=-=-=-==---=-=-=-=-======-==-=-=-=-==--=-=-CRYPTOCURRENCY ORDER SAMPLES-==-=-=-===-=-==-=-=-=-----=-=-=-=-==-=-=-==
 ==================================================================================================================
-1. BUY BTC @ MKT
+1. BUY BTC @ Market
 BODY = 
 {
   "orders": [
@@ -779,7 +779,7 @@ BODY =
 
 
 
-3. SELL BTC @ MKT
+3. SELL BTC @ Market
 BODY = 
 {
   "orders": [
