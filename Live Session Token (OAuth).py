@@ -264,6 +264,8 @@ else:
 print("")
 print("")
 
+json_data = ""
+
 # ---------------------------------------------------------------------------------
 # Request #2: Using LST to request /portfolio/accounts or start a brokerage session
 # ---------------------------------------------------------------------------------
@@ -276,6 +278,7 @@ url = 'https://api.ibkr.com/v1/api/portfolio/accounts'
 ##### OR to initialize a Brokerage Session (instead) #####
 # method = 'POST'
 # url = 'https://api.ibkr.com/v1/api/iserver/auth/ssodh/init'
+# json_data = {"publish":True, "compete":True}
 
 
 oauth_params = {
@@ -327,9 +330,14 @@ headers = {"Authorization": oauth_header}
 headers["User-Agent"] = "python/3.11"
 
 # Prepare and send request to /portfolio/accounts, print request and response.
-accounts_request = requests.Request(method=method, url=url, headers=headers)
-accounts_response = session_object.send(accounts_request.prepare())
-print(formatted_HTTPrequest(accounts_response))
+if url == "https://api.ibkr.com/v1/api/portfolio/accounts":
+    accounts_request = requests.Request(method=method, url=url, headers=headers)
+    accounts_response = session_object.send(accounts_request.prepare())
+    print(formatted_HTTPrequest(accounts_response))
+elif url == "https://api.ibkr.com/v1/api/iserver/auth/ssodh/init":
+    accounts_request = requests.Request(method=method, url=url, headers=headers, json=json_data)
+    accounts_response = session_object.send(accounts_request.prepare())
+    print(formatted_HTTPrequest(accounts_response))
 
 #----------------------------------------------------------------------------------------------------------
 
