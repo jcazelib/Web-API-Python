@@ -19,6 +19,8 @@ This error suggests your JSON body is not formatted correctly (double-check the 
     "statusCode": 400
 }
 
+Prices now must by typed as floating point integers. Using a string for price / auxPrice will give a 400 error.
+
 
 
 ==================================================================================================================
