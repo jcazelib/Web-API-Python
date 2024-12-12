@@ -296,7 +296,7 @@ replybody = {}
 # method = 'POST'
 # url = "".join([f'https://{baseURL}/v1/api/iserver/account/{accountId}/orders'])     #Place Orders endpoint - https://ibkrcampus.com/ibkr-api-page/cpapi-v1/#place-order
 
-# conid = 265598    
+# conid = XXXXXX      #Your CONID goes here    
 # orders = [
 #         {
 #             "conid": conid,
