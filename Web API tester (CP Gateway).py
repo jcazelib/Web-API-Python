@@ -307,10 +307,6 @@ replybody = {}
 #   ]
 # }
 
-# body = {
-#   "orders": orders
-# }
-
 
 ##### REPLY TO ORDERS #####
 # replyId = '268bd34a-2826-44dd-aa1d-502831187b31'
