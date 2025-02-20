@@ -296,21 +296,19 @@ replybody = {}
 # method = 'POST'
 # url = "".join([f'https://{baseURL}/v1/api/iserver/account/{accountId}/orders'])     #Place Orders endpoint - https://ibkrcampus.com/ibkr-api-page/cpapi-v1/#place-order
 
-# conid = XXXXXX      #Your CONID goes here    
-# orders = [
-#         {
-#             "conid": conid,
-#             "orderType": "LMT",
-#             "outsideRTH": False,
-#             "price": 1,
-#             "side": "BUY",
-#             "tif": "GTC",
-#             "quantity": 1
-#         }
-# ]
-
-# body = {
-#   "orders": orders
+#### body = {
+#   "orders": [
+#     {
+#       "side": "BUY",
+#       "quantity": 1,
+#       "conid": 265598,               #IBKR Contract Identifier (CONID) for AAPL Stock
+#       "orderType": "LMT",
+#       "listingExchange": "SMART",
+#       "price": 1,
+#       "tif": "DAY",
+#       "outsideRTH": False
+#     }
+#   ]
 # }
 
 
