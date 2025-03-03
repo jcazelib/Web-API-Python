@@ -62,8 +62,8 @@ def on_open(ws):
     #ws.send(f'sbd+{accountId}+12087792+IDEALPRO')          
     #ws.send('smh+265598+{"period": "1d","bar": "1min","source": "trades","format": "%o/%c/%h/%l"}')           
       
-    #ws.send(f'ssd+{accountId}+{"keys":["AccruedCash-S","ExcessLiquidity-S"],"fields":["currency","monetaryValue"]}')
-    #ws.send(f'sld+{accountId}+{"keys":["LedgerListBASE","LedgerListEUR"], "fields":["cashBalance","exchangeRate"]}')
+    #ws.send(f'sld+{accountId}')
+    #ws.send(f'ssd+{accountId}')
     
     #ws.send('sor+{}')
     #ws.send('str+{"realtimeUpdatesOnly": true, "days": 7}')
