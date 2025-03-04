@@ -629,6 +629,11 @@ oauth_header = "OAuth " + ", ".join([f'{k}="{v}"' for k, v in sorted(oauth_param
 headers = {"Authorization": oauth_header}
 headers["User-Agent"] = "python/3.11"
 
+#headers["Accept"] = "*/*"
+#headers["Connection"] = "keep-alive"
+#headers["Content-Type"] = "application/json"
+#headers["Host"] = "api.ibkr.com"
+
 # print("CONSUMER KEY = ", consumer_key)
 # print("")
 
