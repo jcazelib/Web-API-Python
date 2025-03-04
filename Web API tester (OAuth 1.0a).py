@@ -631,7 +631,6 @@ headers["User-Agent"] = "python/3.11"
 
 #headers["Accept"] = "*/*"
 #headers["Connection"] = "keep-alive"
-#headers["Content-Type"] = "application/json"
 #headers["Host"] = "api.ibkr.com"
 
 # print("CONSUMER KEY = ", consumer_key)
