@@ -486,8 +486,6 @@ BODY =
             "strategy": "Adaptive",
             "strategyParameters": { 
                 "adaptivePriority":"Urgent"       //Required 
-                //"startTime": "13:01:00",
-                //"endTime": "15:00:00"
             }
      }
     ]
