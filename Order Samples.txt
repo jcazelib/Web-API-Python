@@ -19,7 +19,7 @@ This error suggests your JSON body is not formatted correctly (double-check the 
     "statusCode": 400
 }
 
-Prices now must by typed as floating point integers. Using a string for price / auxPrice will give a 400 error.
+Prices now must by typed as floating point integers. Using a string for price / auxPrice will give a 400 error. NOTE: ForecastEx contracts are tradable in Web API
 
 
 
@@ -52,6 +52,7 @@ Other (optional) order attributes:
 5. Adaptive LMT (or Market) order 
 6. Options spread order
 7. Futures spread order (ES)
+8. allOrNone
 
 
 IB Algo orders:
@@ -467,6 +468,23 @@ BODY =
   ]
 }
 
+
+
+8. allOrNone order
+{
+  "orders": [
+    {
+      "side": "BUY",
+      "quantity": 1,
+      "conid": 265598,                        
+      "orderType": "LMT",
+      "price": 1,
+      "outsideRTH": false,
+      "allOrNone": true,
+      "tif": "DAY"
+    }
+  ]
+}
 
 ==================================================================================================================
 -=-=-=-==---=-=-=-=-======-==-=-=-=-==--=-=-IB ALGO ORDER SAMPLES-==-=-=-===-=-==-=-=-=-----=-=-=-=-==-=-=-====-=-
