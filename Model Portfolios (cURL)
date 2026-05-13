@@ -33,7 +33,7 @@ Create/Edit Model
 curl -k -X POST "https://localhost:5000/v1/api/fa/model/save" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"reqID\":127,\"model\":\"MCPAPI-DEMO\",\"desc\":\"MCPAPI-DEMO-LongOnly\",\"isStatic\":false,\"positionTargets\":[{\"cid\":270639,\"trgt\":0.45},{\"cid\":268084,\"trgt\":0.45}],\"cashTargets\":[{\"ccy\":\"USD\",\"trgt\":0.1}], \"subscriptionKey\":\"\"}"
   
 Invest Divest (invest $10000)
-curl -k -X POST "https://localhost:5000/v1/api/fa/model/invest-divest" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"reqID\":130,\"model\":\"MCPAPI-DEMO\",\"accountList\":[{\"account\":\"DU12345\",\"amtToInvest\":10000}], \"subscriptionKey\":\"\"}"
+curl -k -X POST "https://localhost:5000/v1/api/fa/model/invest-divest" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"reqID\":130,\"model\":\"MCPAPI-DEMO\",\"accountList\":[{\"account\":\"DUXXXX123\",\"amtToInvest\":10000}], \"subscriptionKey\":\"\"}"
 
 Invest Divest Positions
 curl -k -X POST "https://localhost:5000/v1/api/fa/model/invest-divest-positions" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"reqID\":131,\"model\":\"MCPAPI-DEMO\", \"subscriptionKey\":\"\"}"
@@ -42,7 +42,7 @@ Submit Transfers
 curl -k -X POST "https://localhost:5000/v1/api/fa/model/submit-transfers" -H "accept: application/json" -H "Content-Type: application/json" -d " {\"reqID\":132,\"fpOrderId\":1, \"subscriptionKey\":\"\"}"
  
 Invest Divest (target amount $5000 -> effectively divest $5000)
-curl -k -X POST "https://localhost:5000/v1/api/fa/model/invest-divest" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"reqID\":133,\"model\":\"MCPAPI-DEMO\",\"accountList\":[{\"account\":\"DU12345\",\"targetAmt\":5000}], \"subscriptionKey\":\"\"}"
+curl -k -X POST "https://localhost:5000/v1/api/fa/model/invest-divest" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"reqID\":133,\"model\":\"MCPAPI-DEMO\",\"accountList\":[{\"account\":\"DUXXXX123\",\"targetAmt\":5000}], \"subscriptionKey\":\"\"}"
 
 Rebalance to New Targets
 curl -k -X POST "https://localhost:5000/v1/api/fa/model/rebalance/to-new-targets" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"reqID\": 398896, \"model\": \"MCPAPI-DEMO\", \"positionTargets\":
