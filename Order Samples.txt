@@ -486,6 +486,22 @@ BODY =
   ]
 }
 
+9. Deactivated order
+{
+  "orders": [
+    {
+      "side": "BUY",
+      "quantity": 1,
+      "conid": 265598,                        
+      "orderType": "LMT",
+      "price": 1,
+      "outsideRTH": false,
+      "deactivated": true,   //functions the same as saving an order in TWS - https://www.interactivebrokers.com/campus/trading-lessons/getting-started-with-the-order-entry-panel/
+      "tif": "DAY"
+    }
+  ]
+}
+
 ==================================================================================================================
 -=-=-=-==---=-=-=-=-======-==-=-=-=-==--=-=-IB ALGO ORDER SAMPLES-==-=-=-===-=-==-=-=-=-----=-=-=-=-==-=-=-====-=-
 ==================================================================================================================
