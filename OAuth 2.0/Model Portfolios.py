@@ -152,8 +152,8 @@ url = f"{cpapi_url}/iserver/account/allocation/models"              #CALL THIS P
 #       "side": "BUY",
 #       "jsonPayload": {
 #         "allocation_profile": {
-#           "alloc_type": "SHARE",
-#           "allocations": [{"account": accountId, "amount": 2}]
+#           "alloc_type": "SHARE",                                 #Use SHARE + quantity for share quantities | CASH + cashQty for cash quantity orders
+#           "allocations": [{"account": accountId, "amount": 2}]   #For multiple accounts/amounts, ensure that quantity or cashQty used above = the sum of each "amount" used here
 #         }
 #       }
 #     }
@@ -240,7 +240,7 @@ url = f"{cpapi_url}/iserver/account/allocation/models"              #CALL THIS P
 #====================================================================================================================
 ##### New Rebalance Endpoints 2026 #####
 # method = "POST"
-# url = f'{cpapi_url}/fa/model/rebalance/to-existing-targets'
+# url = f'{cpapi_url}/fa/model/rebalance/to-existing-targets'      #Use "rebalanceType": "MODEL" with rebalance orders
 # json_content = {
 #   "reqID": 398899,
 #   "model": f"{modelCode}",
@@ -248,7 +248,38 @@ url = f"{cpapi_url}/iserver/account/allocation/models"              #CALL THIS P
 # }
 
 # method = "POST"
-# url = f'{cpapi_url}/fa/model/rebalance/to-new-targets'
+# url = f"{cpapi_url}/iserver/account/{modelCode}/orders"
+# {
+#     "orders": [
+#         {
+#             "cashQty": 6046.13,
+#             "orderType": "LMT",
+#             "price": 1,
+#             "tif": "DAY",
+#             "outsideRTH": False,
+#             "isModel": true,
+#             "conid": "268084",
+#             "side": "BUY",
+#             "jsonPayload": {
+#                 "allocation_profile": {
+#                     "alloc_type": "CASH",
+#                     "allocations": [
+#                         {
+#                             "account": "DUXXXX123",
+#                             "amount": 6046.13
+#                         }
+#                     ]
+#                 }
+#             },
+#             "trgtPercent": 60.00,
+#             "rebalanceType": "MODEL"
+#         }
+#     ]
+# }
+
+
+# method = "POST"
+# url = f'{cpapi_url}/fa/model/rebalance/to-new-targets'            #Use "rebalanceType": "MODEL" with rebalance orders
 # json_content = {
 #   "reqID": 398896,
 #   "model": f"{modelCode}",
@@ -264,7 +295,6 @@ url = f"{cpapi_url}/iserver/account/allocation/models"              #CALL THIS P
 
 # method = "POST"
 # url = f"{cpapi_url}/iserver/account/{modelCode}/orders"
-# ##url = f"{cpapi_url}/iserver/account/{modelCode}/orders/whatif"
 # json_content = {
 #     "orders": [
 #         {
