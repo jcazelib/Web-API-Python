@@ -13,11 +13,11 @@ The content included here demonstrates Python implementations for either Client 
 Note about OAuth 1.0a Implementation -
 For users looking to use utilize the OAuth 1.0a implementation, please be aware that you must have a funded ORG or Institutional account through Interactive Brokers, with approved access for the OAuth self-service portal, provided by the IBKR API Support team for qualified accounts.
 
-OAuth 1.0a flow:
-POST https://api.ibkr.com/oauth/live_session_token        (when using your own custom 9-charcater Consumer Key, start with the Live Session Token request)
-POST https://api.ibkr.com/v1/api/iserver/auth/ssodh/init    
-time.sleep(X) for 3-5 seconds
-GET https://api.ibkr.com/v1/api/iserver/accounts
-Access any other non-/iserver or /iserver endpoints in the Web API as needed
-POST https://api.ibkr.com/v1/api/tickle                    
-POST https://api.ibkr.com/v1/api/logout                   
+OAuth 1.0a flow: <br>
+POST https://api.ibkr.com/oauth/live_session_token        (when using your own custom 9-charcater Consumer Key, start with the Live Session Token request) <br>
+POST https://api.ibkr.com/v1/api/iserver/auth/ssodh/init     <br>
+time.sleep(X) for 3-5 seconds <br>
+GET https://api.ibkr.com/v1/api/iserver/accounts <br>
+Access any other non-/iserver or /iserver endpoints in the Web API as needed <br>
+POST https://api.ibkr.com/v1/api/tickle   <br>                  
+POST https://api.ibkr.com/v1/api/logout      <br>              
