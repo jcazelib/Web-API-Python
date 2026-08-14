@@ -4,7 +4,7 @@ Phase 1 <br>
 GET /iserver/account/allocation/models      (GET IServer models, query this prior to other /fa/model requests below) <br>
 POST /fa/fa-preset/get                      (Get Model Presets) <br>
 POST /fa/fa-preset/save                     (Set Model Presets) <br>
-POST /fa/model/accounts-details             (Get Models Accounts) <br>           
+POST /fa/model/accounts-details             (Get Models Accounts)       
 POST /fa/model/invest-divest                (Invest Account Into Model) <br>
 POST /fa/model/invest-divest-positions      (Summary Of Accounts Invested In The Model) <br>
 POST /fa/model/list                         (Request All Models) <br>
@@ -20,13 +20,13 @@ POST /fa/model/rebalance/to-new-targets      (Rebalance to new targets, not yet 
 POST /fa/model/rebalance/to-specific-targets (Rebalance to specific targets, not yet documented on IBKR) <br>
 POST /fa/model/tws-invest-divest             (TWS-style invest divest, not yet documented on IBKR) <br>
 POST /fa/is-full-master                      (Check if full master or partial master, not yet documented on IBKR) <br>
-POST /fa/model/cash-analyzer                 (Cash analyzer, used with multi-currency models not yet documented on IBKR) <br> <br>
+POST /fa/model/cash-analyzer                 (Cash analyzer, used with multi-currency models not yet documented on IBKR) <br> 
 
 Example /portfolio requests <br>
 GET /portfolio/{accountId}/positions/{pageId}?model=MP.{modelCode} <br>
 GET /portfolio2/{accountId}/positions?model=MP.{modelCode} <br>
 GET /portfolio/{accountId}/summary?model=MP.{modelCode} <br>
-GET /portfolio/{accountId}/ledger?model=MP.{modelCode} <br> <br>
+GET /portfolio/{accountId}/ledger?model=MP.{modelCode} <br>
 
 Example pnl requests <br>
 GET /iserver/account/pnl/partitioned <br>
