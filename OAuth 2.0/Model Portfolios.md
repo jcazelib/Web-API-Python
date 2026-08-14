@@ -12,7 +12,7 @@ POST /fa/model/positions                    (Get Model Positions) <br>
 POST /fa/model/save                         (Set Model Allocations) <br>
 POST /fa/model/submit-transfers             (Submit Transfers) <br>
 POST /fa/model/summary                      (Request Model Summary) <br>
-POST /iserver/account/{modelCode}/orders    (Place Order) <br> <br>
+POST /iserver/account/{modelCode}/orders    (Place Order) <br>
 
 Phase 2 <br>
 POST /fa/model/rebalance/to-existing-targets (Rebalance to existing targets, not yet documented on IBKR) <br>
