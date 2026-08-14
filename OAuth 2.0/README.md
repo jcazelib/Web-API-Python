@@ -1,4 +1,12 @@
-Example OAuth 2.0 implementation with IBKR
+IBKR Python WebAPI Samples
+
+Author - John Cazel / jcazelib | https://github.com/jcazelib
+
+Documentation - https://api.ibkr.com/gw/swagger-ui.html#/Trading%20Accounts
+
+Purpose - The content included here demonstrates Python implementations for OAuth 2.0. This should not be used as an example of a perfect trading system, but a means of implementing our RESTful API with standard Python libraries.
+
+Note about OAuth 2.0 Implementation - For users looking to use utilize the OAuth 2.0 implementation, please be aware that you must have a funded ORG or Institutional account through Interactive Brokers. 
 
 Example auth flow:
 1. POST https://api.ibkr.com/oauth2/api/v1/token    (scope = sso-sessions.write)                   
