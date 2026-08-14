@@ -14,7 +14,7 @@ Note about OAuth 1.0a Implementation -
 For users looking to use utilize the OAuth 1.0a implementation, please be aware that you must have a funded ORG or Institutional account through Interactive Brokers, with approved access for the OAuth self-service portal, provided by the IBKR API Support team for qualified accounts.
 
 OAuth 1.0a flow: <br>
-1. POST https://api.ibkr.com/oauth/live_session_token        (when using your own custom 9-charcater Consumer Key, start with the Live Session Token request) <br>
+1. POST https://api.ibkr.com/oauth/live_session_token        (when using your own custom 9-character Consumer Key, start with the Live Session Token request) <br>
 2. POST https://api.ibkr.com/v1/api/iserver/auth/ssodh/init     <br>
 3. time.sleep(X) for 3-5 seconds <br>
 4. GET https://api.ibkr.com/v1/api/iserver/accounts <br>
