@@ -1,6 +1,5 @@
 Documentation - https://api.ibkr.com/gw/swagger-ui.html#/Trading%20FA%20Allocation%20Management <br>
 
-- Endpoints - <br>
 Phase 1 <br>
 GET /iserver/account/allocation/models      (GET IServer models, query this prior to other /fa/model requests below) <br>
 POST /fa/fa-preset/get                      (Get Model Presets) <br>
