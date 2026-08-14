@@ -19,5 +19,5 @@ POST https://api.ibkr.com/v1/api/iserver/auth/ssodh/init     <br>
 time.sleep(X) for 3-5 seconds <br>
 GET https://api.ibkr.com/v1/api/iserver/accounts <br>
 Access any other non-/iserver or /iserver endpoints in the Web API as needed <br>
-POST https://api.ibkr.com/v1/api/tickle   <br>                  
+POST https://api.ibkr.com/v1/api/tickle                 
 POST https://api.ibkr.com/v1/api/logout      <br>              
