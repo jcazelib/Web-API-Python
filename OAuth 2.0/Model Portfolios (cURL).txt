@@ -1,0 +1,207 @@
+Model Portfolios documentation:
+===============================
+https://api.ibkr.com/gw/swagger-ui.html#/Trading%20FA%20Allocation%20Management
+https://www.interactivebrokers.com/campus/ibkr-api-page/webapi-ref/#tag/Trading-FA-Allocation-Management/paths/~1fa~1fa-preset~1get/post
+
+cURL - CP Gateway
+==================
+Initialize (IServer) Brokerage Session
+curl -k -X POST "https://localhost:5000/v1/api/iserver/auth/ssodh/init" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"publish\":true, \"compete\":true}"
+
+Brokerage Accounts
+curl -k -X GET "https://localhost:5000/v1/api/iserver/accounts" -H "accept: application/json"
+
+Allocation Models
+curl -k -X GET "https://localhost:5000/v1/api/iserver/account/allocation/models" -H "accept: application/json"
+
+Suppress Order Questions
+curl -k -X POST "https://localhost:5000/v1/api/iserver/questions/suppress" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"messageIds\":[\"o163\",\"o354\",\"o382\",\"o383\",\"o451\",\"o10164\",\"o10223\",\"p6\",\"o10153\",\"o10331\"]}"
+
+Get Preset
+curl -k -X POST "https://localhost:5000/v1/api/fa/fa-preset/get" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"reqID\":1000, \"subscriptionKey\":\"\"}"
+
+Set Preset
+curl -k -X POST "https://localhost:5000/v1/api/fa/fa-preset/save" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"reqID\":1001,\"avoidNegativeCashInIndependent\":false,\"closeDivestIndependentPosition\":false,\"fullyInvestExistingLongPositions\":false,\"keepModelOpen\":false,\"preferCrossWithIndependent\":false,\"preferTransferFromIndependent\":false,\"roundAllocationQuantityToExchangeBoardLot\":false,\"useNonBaseCcy\":false,\"useToleranceRange\":false, \"subscriptionKey\":\"\"}"
+
+Portfolio Subaccounts
+curl -k -X GET "https://localhost:5000/v1/api/portfolio/subaccounts" -H "accept: application/json"
+
+Portfolio Summary
+curl -k -X GET "https://localhost:5000/v1/api/portfolio/DUXXXX123/summary" -H "accept: application/json"
+
+Portfolio Ledger
+curl -k -X GET "https://localhost:5000/v1/api/portfolio/DUXXXX123/ledger" -H "accept: application/json"
+
+Portfolio Positions
+curl -k -X GET "https://localhost:5000/v1/api/portfolio2/DUXXXX123/positions" -H "accept: application/json"
+
+Portfolio Summary (Model)
+curl -k -X GET "https://localhost:5000/v1/api/portfolio/DUXXXX123/summary?model=MP.MCPAPI-DEMO" -H "accept: application/json"
+
+Portfolio Ledger (Model)
+curl -k -X GET "https://localhost:5000/v1/api/portfolio/DUXXXX123/ledger?model=MP.MCPAPI-DEMO" -H "accept: application/json"
+
+Portfolio Positions (Model)
+curl -k -X GET "https://localhost:5000/v1/api/portfolio2/DUXXXX123/positions?model=MP.MCPAPI-DEMO" -H "accept: application/json"
+
+Model List
+curl -k -X POST "https://localhost:5000/v1/api/fa/model/list" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"reqID\":1002, \"subscriptionKey\":\"\"}"
+
+Create/Edit Model
+curl -k -X POST "https://localhost:5000/v1/api/fa/model/save" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"reqID\":1003,\"model\":\"MCPAPI-DEMO\",\"desc\":\"MCPAPI-DEMO-LongOnly\",\"isStatic\":false,\"positionTargets\":[{\"cid\":270639,\"trgt\":0.45},{\"cid\":268084,\"trgt\":0.45}],\"cashTargets\":[{\"ccy\":\"USD\",\"trgt\":0.1}], \"subscriptionKey\":\"\"}"
+
+Invest Divest (single account $1000)
+curl -k -X POST "https://localhost:5000/v1/api/fa/model/invest-divest" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"reqID\":1004,\"model\":\"MCPAPI-DEMO\",\"accountList\":[{\"account\":\"DUXXXX123\",\"amtToInvest\":1000}], \"subscriptionKey\":\"\"}"
+
+Invest Divest (multiple accounts $3000)
+curl -k -X POST "https://localhost:5000/v1/api/fa/model/invest-divest" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"reqID\":1005,\"model\":\"MCPAPI-DEMO\",\"accountList\":[{\"account\":\"DUXXXX123\",\"amtToInvest\":1000},{\"account\":\"DUXXXX124\",\"amtToInvest\":1000},{\"account\":\"DUXXXX125\",\"amtToInvest\":1000}], \"subscriptionKey\":\"\"}"
+
+Invest Divest (target amount $5000 -> effectively divest $5000)
+curl -k -X POST "https://localhost:5000/v1/api/fa/model/invest-divest" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"reqID\":1006,\"model\":\"MCPAPI-DEMO\",\"accountList\":[{\"account\":\"DUXXXX123\",\"targetAmt\":5000}], \"subscriptionKey\":\"\"}"
+
+Submit Transfers
+curl -k -X POST "https://localhost:5000/v1/api/fa/model/submit-transfers" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"reqID\":1007,\"fpOrderId\":1, \"subscriptionKey\":\"\"}"
+
+Place Order - Invest (SHARE allocation)
+curl -k -X POST "https://localhost:5000/v1/api/iserver/account/MCPAPI-DEMO/orders" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"orders\":[{\"quantity\":2,\"orderType\":\"LMT\",\"price\":252,\"tif\":\"GTC\",\"outsideRTH\":true,\"isModel\":true,\"cOID\":8314,\"conidex\":8314,\"side\":\"BUY\",\"jsonPayload\":{\"allocation_profile\":{\"alloc_type\":\"SHARE\",\"allocations\":[{\"account\":\"DUXXXX123\",\"amount\":2}]}}}]}"
+
+Place Order - Inline Profiles (CASH allocation, multiple accounts)
+curl -k -X POST "https://localhost:5000/v1/api/iserver/account/MCPAPI-DEMO/orders" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"orders\":[{\"cashQty\":3000,\"orderType\":\"MKT\",\"tif\":\"DAY\",\"isModel\":true,\"conidex\":265598,\"side\":\"BUY\",\"jsonPayload\":{\"allocation_profile\":{\"alloc_type\":\"CASH\",\"allocations\":[{\"account\":\"DUXXXX123\",\"amount\":1000},{\"account\":\"DUXXXX124\",\"amount\":1000},{\"account\":\"DUXXXX125\",\"amount\":1000}]}}}]}"
+
+Invest Divest Positions
+curl -k -X POST "https://localhost:5000/v1/api/fa/model/invest-divest-positions" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"reqID\":1008,\"model\":\"MCPAPI-DEMO\", \"subscriptionKey\":\"\"}"
+
+Model Accounts Details
+curl -k -X POST "https://localhost:5000/v1/api/fa/model/accounts-details" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"calcPnls\":true,\"model\":\"MCPAPI-DEMO\",\"reqID\":1009, \"subscriptionKey\":\"\"}"
+
+Model Positions
+curl -k -X POST "https://localhost:5000/v1/api/fa/model/positions" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"reqID\":1010,\"model\":\"MCPAPI-DEMO\",\"sortField\":\"actl\",\"sortDirection\":\"DESC\",\"limit\":10, \"subscriptionKey\":\"\"}"
+
+Model Summary
+curl -k -X POST "https://localhost:5000/v1/api/fa/model/summary" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"reqID\":1011,\"model\":\"MCPAPI-DEMO\", \"subscriptionKey\":\"\"}"
+
+Place Order
+curl -k -X POST "https://localhost:5000/v1/api/iserver/account/MCPAPI-DEMO/orders" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"orders\":[{\"cashQty\":6046.13,\"orderType\":\"LMT\",\"price\":1,\"tif\":\"DAY\",\"outsideRTH\":false,\"isModel\":true,\"conidex\":\"268084\",\"side\":\"BUY\",\"jsonPayload\":{\"allocation_profile\":{\"alloc_type\":\"CASH\",\"allocations\":[{\"account\":\"DUXXXX123\",\"amount\":6046.13}]}},\"trgtPercent\":60.00,\"rebalanceType\":\"MODEL\"}]}"
+
+Rebalance to Existing Targets
+curl -k -X POST "https://localhost:5000/v1/api/fa/model/rebalance/to-existing-targets" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"reqID\":1012,\"model\":\"MCPAPI-DEMO\", \"subscriptionKey\":\"\"}"
+
+Rebalance to New Targets
+curl -k -X POST "https://localhost:5000/v1/api/fa/model/rebalance/to-new-targets" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"reqID\":1013,\"model\":\"MCPAPI-DEMO\",\"positionTargets\":[{\"conid\":268084,\"target\":0.35,\"locked\":false},{\"conid\":270639,\"target\":0.5,\"locked\":false}],\"cashTargets\":[{\"ccy\":\"USD\",\"target\":0.15,\"locked\":false}], \"subscriptionKey\":\"\"}"
+
+Rebalance to Specific Targets
+curl -k -X POST "https://localhost:5000/v1/api/fa/model/rebalance/to-specific-targets" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"reqID\":1014,\"model\":\"MCPAPI-DEMO\",\"positionTargets\":[{\"conid\":268084,\"target\":0.35,\"locked\":false}], \"subscriptionKey\":\"\"}"
+
+TWS Invest Divest
+curl -k -X POST "https://localhost:5000/v1/api/fa/model/tws-invest-divest" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"reqID\":1015,\"account\":\"DUXXXX123\",\"modelList\":[{\"investCurrency\":\"USD\",\"amtToInvest\":1000,\"model\":\"MCPAPI-DEMO\"},{\"investCurrency\":\"USD\",\"amtToInvest\":2000,\"model\":\"MCPAPI-DEMO\"}], \"subscriptionKey\":\"\"}"
+
+Is Full Master
+curl -k -X POST "https://localhost:5000/v1/api/fa/is-full-master" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"reqID\":1016, \"subscriptionKey\":\"\"}"
+
+Cash Analyzer
+curl -k -X POST "https://localhost:5000/v1/api/fa/model/cash-analyzer" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"reqID\":1017, \"subscriptionKey\":\"\"}"
+
+Logout
+curl -k -X POST "https://localhost:5000/v1/api/logout" -H "accept: application/json"
+
+
+cURL - OAuth 2.0
+=================
+Initialize (IServer) Brokerage Session
+curl -k -X POST "https://api.ibkr.com/v1/api/iserver/auth/ssodh/init" -H "accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer {{BearerToken}}" -d "{\"publish\":true, \"compete\":true}"
+
+Brokerage Accounts
+curl -k -X GET "https://api.ibkr.com/v1/api/iserver/accounts" -H "accept: application/json" -H "Authorization: Bearer {{BearerToken}}"
+
+Allocation Models
+curl -k -X GET "https://api.ibkr.com/v1/api/iserver/account/allocation/models" -H "accept: application/json" -H "Authorization: Bearer {{BearerToken}}"
+
+Suppress Order Questions
+curl -k -X POST "https://api.ibkr.com/v1/api/iserver/questions/suppress" -H "accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer {{BearerToken}}" -d "{\"messageIds\":[\"o163\",\"o354\",\"o382\",\"o383\",\"o451\",\"o10164\",\"o10223\",\"p6\",\"o10153\",\"o10331\"]}"
+
+Get Preset
+curl -k -X POST "https://api.ibkr.com/v1/api/fa/fa-preset/get" -H "accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer {{BearerToken}}" -d "{\"reqID\":1000, \"subscriptionKey\":\"\"}"
+
+Set Preset
+curl -k -X POST "https://api.ibkr.com/v1/api/fa/fa-preset/save" -H "accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer {{BearerToken}}" -d "{\"reqID\":1001,\"avoidNegativeCashInIndependent\":false,\"closeDivestIndependentPosition\":false,\"fullyInvestExistingLongPositions\":false,\"keepModelOpen\":false,\"preferCrossWithIndependent\":false,\"preferTransferFromIndependent\":false,\"roundAllocationQuantityToExchangeBoardLot\":false,\"useNonBaseCcy\":false,\"useToleranceRange\":false, \"subscriptionKey\":\"\"}"
+
+Portfolio Subaccounts
+curl -k -X GET "https://api.ibkr.com/v1/api/portfolio/subaccounts" -H "accept: application/json" -H "Authorization: Bearer {{BearerToken}}"
+
+Portfolio Summary
+curl -k -X GET "https://api.ibkr.com/v1/api/portfolio/DUXXXX123/summary" -H "accept: application/json" -H "Authorization: Bearer {{BearerToken}}"
+
+Portfolio Ledger
+curl -k -X GET "https://api.ibkr.com/v1/api/portfolio/DUXXXX123/ledger" -H "accept: application/json" -H "Authorization: Bearer {{BearerToken}}"
+
+Portfolio Positions
+curl -k -X GET "https://api.ibkr.com/v1/api/portfolio2/DUXXXX123/positions" -H "accept: application/json" -H "Authorization: Bearer {{BearerToken}}"
+
+Portfolio Summary (Model)
+curl -k -X GET "https://api.ibkr.com/v1/api/portfolio/DUXXXX123/summary?model=MP.MCPAPI-DEMO" -H "accept: application/json" -H "Authorization: Bearer {{BearerToken}}"
+
+Portfolio Ledger (Model)
+curl -k -X GET "https://api.ibkr.com/v1/api/portfolio/DUXXXX123/ledger?model=MP.MCPAPI-DEMO" -H "accept: application/json" -H "Authorization: Bearer {{BearerToken}}"
+
+Portfolio Positions (Model)
+curl -k -X GET "https://api.ibkr.com/v1/api/portfolio2/DUXXXX123/positions?model=MP.MCPAPI-DEMO" -H "accept: application/json" -H "Authorization: Bearer {{BearerToken}}"
+
+Model List
+curl -k -X POST "https://api.ibkr.com/v1/api/fa/model/list" -H "accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer {{BearerToken}}" -d "{\"reqID\":1002, \"subscriptionKey\":\"\"}"
+
+Create/Edit Model
+curl -k -X POST "https://api.ibkr.com/v1/api/fa/model/save" -H "accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer {{BearerToken}}" -d "{\"reqID\":1003,\"model\":\"MCPAPI-DEMO\",\"desc\":\"MCPAPI-DEMO-LongOnly\",\"isStatic\":false,\"positionTargets\":[{\"cid\":270639,\"trgt\":0.45},{\"cid\":268084,\"trgt\":0.45}],\"cashTargets\":[{\"ccy\":\"USD\",\"trgt\":0.1}], \"subscriptionKey\":\"\"}"
+
+Invest Divest (single account $1000)
+curl -k -X POST "https://api.ibkr.com/v1/api/fa/model/invest-divest" -H "accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer {{BearerToken}}" -d "{\"reqID\":1004,\"model\":\"MCPAPI-DEMO\",\"accountList\":[{\"account\":\"DUXXXX123\",\"amtToInvest\":1000}], \"subscriptionKey\":\"\"}"
+
+Invest Divest (multiple accounts $3000)
+curl -k -X POST "https://api.ibkr.com/v1/api/fa/model/invest-divest" -H "accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer {{BearerToken}}" -d "{\"reqID\":1005,\"model\":\"MCPAPI-DEMO\",\"accountList\":[{\"account\":\"DUXXXX123\",\"amtToInvest\":1000},{\"account\":\"DUXXXX124\",\"amtToInvest\":1000},{\"account\":\"DUXXXX125\",\"amtToInvest\":1000}], \"subscriptionKey\":\"\"}"
+
+Invest Divest (target amount $5000 -> effectively divest $5000)
+curl -k -X POST "https://api.ibkr.com/v1/api/fa/model/invest-divest" -H "accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer {{BearerToken}}" -d "{\"reqID\":1006,\"model\":\"MCPAPI-DEMO\",\"accountList\":[{\"account\":\"DUXXXX123\",\"targetAmt\":5000}], \"subscriptionKey\":\"\"}"
+
+Submit Transfers
+curl -k -X POST "https://api.ibkr.com/v1/api/fa/model/submit-transfers" -H "accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer {{BearerToken}}" -d "{\"reqID\":1007,\"fpOrderId\":1, \"subscriptionKey\":\"\"}"
+
+Place Order - Invest (SHARE allocation)
+curl -k -X POST "https://api.ibkr.com/v1/api/iserver/account/MCPAPI-DEMO/orders" -H "accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer {{BearerToken}}" -d "{\"orders\":[{\"quantity\":2,\"orderType\":\"LMT\",\"price\":252,\"tif\":\"GTC\",\"outsideRTH\":true,\"isModel\":true,\"cOID\":8314,\"conidex\":8314,\"side\":\"BUY\",\"jsonPayload\":{\"allocation_profile\":{\"alloc_type\":\"SHARE\",\"allocations\":[{\"account\":\"DUXXXX123\",\"amount\":2}]}}}]}"
+
+Place Order - Inline Profiles (CASH allocation, multiple accounts)
+curl -k -X POST "https://api.ibkr.com/v1/api/iserver/account/MCPAPI-DEMO/orders" -H "accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer {{BearerToken}}" -d "{\"orders\":[{\"cashQty\":3000,\"orderType\":\"MKT\",\"tif\":\"DAY\",\"isModel\":true,\"conidex\":265598,\"side\":\"BUY\",\"jsonPayload\":{\"allocation_profile\":{\"alloc_type\":\"CASH\",\"allocations\":[{\"account\":\"DUXXXX123\",\"amount\":1000},{\"account\":\"DUXXXX124\",\"amount\":1000},{\"account\":\"DUXXXX125\",\"amount\":1000}]}}}]}"
+
+Invest Divest Positions
+curl -k -X POST "https://api.ibkr.com/v1/api/fa/model/invest-divest-positions" -H "accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer {{BearerToken}}" -d "{\"reqID\":1008,\"model\":\"MCPAPI-DEMO\", \"subscriptionKey\":\"\"}"
+
+Model Accounts Details
+curl -k -X POST "https://api.ibkr.com/v1/api/fa/model/accounts-details" -H "accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer {{BearerToken}}" -d "{\"calcPnls\":true,\"model\":\"MCPAPI-DEMO\",\"reqID\":1009, \"subscriptionKey\":\"\"}"
+
+Model Positions
+curl -k -X POST "https://api.ibkr.com/v1/api/fa/model/positions" -H "accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer {{BearerToken}}" -d "{\"reqID\":1010,\"model\":\"MCPAPI-DEMO\",\"sortField\":\"actl\",\"sortDirection\":\"DESC\",\"limit\":10, \"subscriptionKey\":\"\"}"
+
+Model Summary
+curl -k -X POST "https://api.ibkr.com/v1/api/fa/model/summary" -H "accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer {{BearerToken}}" -d "{\"reqID\":1011,\"model\":\"MCPAPI-DEMO\", \"subscriptionKey\":\"\"}"
+
+Place Order
+curl -k -X POST "https://api.ibkr.com/v1/api/iserver/account/MCPAPI-DEMO/orders" -H "accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer {{BearerToken}}" -d "{\"orders\":[{\"cashQty\":6046.13,\"orderType\":\"LMT\",\"price\":1,\"tif\":\"DAY\",\"outsideRTH\":false,\"isModel\":true,\"conidex\":\"268084\",\"side\":\"BUY\",\"jsonPayload\":{\"allocation_profile\":{\"alloc_type\":\"CASH\",\"allocations\":[{\"account\":\"DUXXXX123\",\"amount\":6046.13}]}},\"trgtPercent\":60.00,\"rebalanceType\":\"MODEL\"}]}"
+
+Rebalance to Existing Targets
+curl -k -X POST "https://api.ibkr.com/v1/api/fa/model/rebalance/to-existing-targets" -H "accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer {{BearerToken}}" -d "{\"reqID\":1012,\"model\":\"MCPAPI-DEMO\", \"subscriptionKey\":\"\"}"
+
+Rebalance to New Targets
+curl -k -X POST "https://api.ibkr.com/v1/api/fa/model/rebalance/to-new-targets" -H "accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer {{BearerToken}}" -d "{\"reqID\":1013,\"model\":\"MCPAPI-DEMO\",\"positionTargets\":[{\"conid\":268084,\"target\":0.35,\"locked\":false},{\"conid\":270639,\"target\":0.5,\"locked\":false}],\"cashTargets\":[{\"ccy\":\"USD\",\"target\":0.15,\"locked\":false}], \"subscriptionKey\":\"\"}"
+
+Rebalance to Specific Targets
+curl -k -X POST "https://api.ibkr.com/v1/api/fa/model/rebalance/to-specific-targets" -H "accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer {{BearerToken}}" -d "{\"reqID\":1014,\"model\":\"MCPAPI-DEMO\",\"positionTargets\":[{\"conid\":268084,\"target\":0.35,\"locked\":false}], \"subscriptionKey\":\"\"}"
+
+TWS Invest Divest
+curl -k -X POST "https://api.ibkr.com/v1/api/fa/model/tws-invest-divest" -H "accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer {{BearerToken}}" -d "{\"reqID\":1015,\"account\":\"DUXXXX123\",\"modelList\":[{\"investCurrency\":\"USD\",\"amtToInvest\":1000,\"model\":\"MCPAPI-DEMO\"},{\"investCurrency\":\"USD\",\"amtToInvest\":2000,\"model\":\"MCPAPI-DEMO\"}], \"subscriptionKey\":\"\"}"
+
+Is Full Master
+curl -k -X POST "https://api.ibkr.com/v1/api/fa/is-full-master" -H "accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer {{BearerToken}}" -d "{\"reqID\":1016, \"subscriptionKey\":\"\"}"
+
+Cash Analyzer
+curl -k -X POST "https://api.ibkr.com/v1/api/fa/model/cash-analyzer" -H "accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer {{BearerToken}}" -d "{\"reqID\":1017, \"subscriptionKey\":\"\"}"
+
+Logout
+curl -k -X POST "https://api.ibkr.com/v1/api/logout" -H "accept: application/json" -H "Authorization: Bearer {{BearerToken}}"
