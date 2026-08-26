@@ -1,7 +1,7 @@
 Model Portfolios documentation:
 ===============================
 https://api.ibkr.com/gw/swagger-ui.html#/Trading%20FA%20Model%20Portfolios
-https://www.interactivebrokers.com/campus/ibkr-api-page/webapi-ref/#tag/Trading-FA-Allocation-Management/paths/~1fa~1fa-preset~1get/post
+https://www.interactivebrokers.com/docs/web-api/api-reference/trading/trading-fa-model-portfolios/get-model-presets
 
 cURL - CP Gateway
 ==================
