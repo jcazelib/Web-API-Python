@@ -5,7 +5,7 @@ IBKR Model Portfolios (Web API) tester 2026
 - Ensure the GET /iserver/account/allocation/models endpoint is called 1st, prior to other /fa/model endpoints
 
 Documentation: 
-https://api.ibkr.com/gw/swagger-ui.html#/Trading%20FA%20Allocation%20Management
+https://api.ibkr.com/gw/swagger-ui.html#/Trading%20FA%20Model%20Portfolios
 """
 
 import json
