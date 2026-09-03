@@ -9,7 +9,7 @@ GET  /iserver/contract/{{conid}}/algos   ->  used to check available IBALGO orde
     i.e. https://localhost:5000/v1/api/iserver/contract/265598/algos?addDescription=1&addParams=1
     i.e. https://api.ibkr.com/v1/api/iserver/contract/265598/algos?addDescription=1&addParams=1
 
-Link = https://ibkrcampus.com/ibkr-api-page/cpapi-v1/#place-order
+Link = https://www.interactivebrokers.com/docs/web-api/v1/endpoints/orders/place-order | https://www.interactivebrokers.com/docs/web-api/api-reference/trading/trading-orders/submit-new-order
 
 NOTE on 400 Errors:
 -------------------
@@ -20,7 +20,6 @@ This error suggests your JSON body is not formatted correctly (double-check the 
 }
 
 Prices now must by typed as floating point integers. Using a string for price / auxPrice will give a 400 error. NOTE: ForecastEx contracts are tradable in Web API
-
 
 
 ==================================================================================================================
