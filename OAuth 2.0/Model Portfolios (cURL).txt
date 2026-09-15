@@ -3,6 +3,11 @@ Model Portfolios documentation:
 https://api.ibkr.com/gw/swagger-ui.html#/Trading%20FA%20Model%20Portfolios
 https://www.interactivebrokers.com/docs/web-api/api-reference/trading/trading-fa-model-portfolios/get-model-presets
 
+NOTE: POST /fa/model/tws-invest-divest supports:
+1. A single U-account ID            -> "account": "DUXXXX123"
+2. A list of U-account IDs          -> "accountList": ["DUXXXX123","DUXXXX124", "DUXXXX125"]
+3. An FA pre-trade allocation group -> "group": "Group1"
+
 cURL - CP Gateway
 ==================
 Initialize (IServer) Brokerage Session
