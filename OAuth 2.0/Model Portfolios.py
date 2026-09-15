@@ -6,6 +6,17 @@ IBKR Model Portfolios (Web API) tester 2026
 
 Documentation: 
 https://api.ibkr.com/gw/swagger-ui.html#/Trading%20FA%20Model%20Portfolios
+
+NOTE: POST /fa/model/tws-invest-divest supports:
+1. A single U-account ID            -> "account": "DUXXXX123"
+2. A list of U-account IDs          -> "accountList": ["DUXXXX123","DUXXXX124", "DUXXXX125"]
+3. An FA pre-trade allocation group -> "group": "Group1"  or  "group": "All" (if used, the investment amount is divided equally between the group's accounts)
+
+/tws-invest-divest can accept a named group (or "All"). If used, the investment amount is divided equally between the group's accounts. A list of accounts can also be provided. 
+
+Pros & cons of using /tws-invest-divest vs. /invest-divest:
+With tws-invest-divest, the user can have instruments in multiple currencies in the model — with invest-divest, only a single currency is possible.
+tws-invest-divest allows multiple models to be invested in with one request, whereas invest-divest supports only a single model per request. However, invest-divest allows a different investment amount to be specified per account (since groups are not supported and each account's amount is set individually), while tws-invest-divest splits one amount equally across all accounts when a group or account list is used.
 """
 
 import json
@@ -128,7 +139,7 @@ url = f"{cpapi_url}/iserver/account/allocation/models"              #CALL THIS P
 # url = f"{cpapi_url}/fa/model/submit-transfers"
 # json_content = {
 #   "reqID": 132,
-#   "fpOrderId": 1,                                #replace with the transfersInstructionId returned from POST /fa/model/invest-divest
+#   "fpOrderId": 1,                                #replace with the transfersInstructionId returned from POST /fa/model/invest-divest or POST /fa/model/tws-invest-divest
 #   "subscriptionKey": ""
 # }
 
@@ -378,6 +389,9 @@ url = f"{cpapi_url}/iserver/account/allocation/models"              #CALL THIS P
 # json_content = {
 #   "reqID": 398889,
 #   "account": f"{accountId}",
+##  "accountList": ["DUXXX123", "DUXXX124", "DUXXX125"],
+##  "group": "Group1"  
+##  "group": "All"
 #   "modelList": [
 #     {
 #       "investCurrency": "USD",
