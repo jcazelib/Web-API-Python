@@ -386,7 +386,7 @@ url = f"{cpapi_url}/iserver/account/allocation/models"              #CALL THIS P
 # }
 
 # method = "POST"
-# url = f'{cpapi_url}/fa/model/tws-invest-divest'  
+# url = f'{cpapi_url}/fa/model/tws-invest-divest'           #An account / account_list / group can invest in multiple models in the same request. One can specify one of targetAmt/targetPercent/amtToInvest for each model separately
 # json_content = {
 #   "reqID": 398889,
 #   "account": f"{accountId}",
