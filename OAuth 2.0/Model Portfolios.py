@@ -7,7 +7,8 @@ IBKR Model Portfolios (Web API) tester 2026
 Documentation: 
 https://api.ibkr.com/gw/swagger-ui.html#/Trading%20FA%20Model%20Portfolios
 
-NOTE: POST /fa/model/tws-invest-divest supports:
+
+POST /fa/model/tws-invest-divest supports:
 1. A single U-account ID            -> "account": "DUXXXX123"
 2. A list of U-account IDs          -> "accountList": ["DUXXXX123","DUXXXX124", "DUXXXX125"]
 3. An FA pre-trade allocation group -> "group": "Group1"  or  "group": "All" (if used, the investment amount is divided equally between the group's accounts)
