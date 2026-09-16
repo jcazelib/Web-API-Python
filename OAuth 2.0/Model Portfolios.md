@@ -1,4 +1,5 @@
-Documentation - https://api.ibkr.com/gw/swagger-ui.html#/Trading%20FA%20Model%20Portfolios <br>
+FA Model Portfolios Documentation - https://api.ibkr.com/gw/swagger-ui.html#/Trading%20FA%20Model%20Portfolios <br>
+FA Pre-trade allocation groups Documentation - https://api.ibkr.com/gw/swagger-ui.html#/Trading%20FA%20Allocation%20Management | https://www.interactivebrokers.com/en/software/pdfhighlights/PDF-AdvisorAllocations.php | https://www.ibkrguides.com/traderworkstation/pre-trade-allocations.htm <br>
 
 Phase 1 <br>
 GET /iserver/account/allocation/models      (GET IServer models, query this prior to other /fa/model requests below) <br>
@@ -15,12 +16,12 @@ POST /fa/model/summary                      (Request Model Summary) <br>
 POST /iserver/account/{modelCode}/orders    (Place Order) <br>
 
 Phase 2 <br>
-POST /fa/model/rebalance/to-existing-targets (Rebalance to existing targets, not yet documented on IBKR) <br>
-POST /fa/model/rebalance/to-new-targets      (Rebalance to new targets, not yet documented on IBKR) <br>
-POST /fa/model/rebalance/to-specific-targets (Rebalance to specific targets, not yet documented on IBKR) <br>
-POST /fa/model/tws-invest-divest             (TWS-style invest divest, not yet documented on IBKR) <br>
-POST /fa/is-full-master                      (Check if full master or partial master, not yet documented on IBKR) <br>
-POST /fa/model/cash-analyzer                 (Cash analyzer, used with multi-currency models not yet documented on IBKR) <br> 
+POST /fa/model/rebalance/to-existing-targets (Rebalance to existing targets, not yet documented) <br>
+POST /fa/model/rebalance/to-new-targets      (Rebalance to new targets, not yet documented) <br>
+POST /fa/model/rebalance/to-specific-targets (Rebalance to specific targets, not yet documented) <br>
+POST /fa/model/tws-invest-divest             (TWS-style invest divest, not yet documented) <br>
+POST /fa/is-full-master                      (Check if full master or partial master, not yet documented) <br>
+POST /fa/model/cash-analyzer                 (Cash analyzer, used with multi-currency models not yet documented) <br> 
 
 Example /portfolio requests <br>
 GET /portfolio/{accountId}/positions/{pageId}?model=MP.{modelCode} <br>
