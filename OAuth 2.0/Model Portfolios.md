@@ -1,5 +1,11 @@
-FA Model Portfolios Documentation - https://api.ibkr.com/gw/swagger-ui.html#/Trading%20FA%20Model%20Portfolios <br>
-FA Pre-trade allocation groups Documentation - https://api.ibkr.com/gw/swagger-ui.html#/Trading%20FA%20Allocation%20Management | https://www.interactivebrokers.com/en/software/pdfhighlights/PDF-AdvisorAllocations.php | https://www.ibkrguides.com/traderworkstation/pre-trade-allocations.htm <br>
+<b> FA Model Portfolios Documentation <b/> <br>
+Swagger - https://api.ibkr.com/gw/swagger-ui.html#/Trading%20FA%20Model%20Portfolios <br>
+FA Model Portfolios long form docs - https://www.interactivebrokers.com/docs/web-api/trading/financial-advisors/model-portfolios <br> <br>
+
+<b> FA Pre-trade Allocations Documentation <b/> <br>
+Swagger - https://api.ibkr.com/gw/swagger-ui.html#/Trading%20FA%20Allocation%20Management <br>
+Inline allocations - https://www.interactivebrokers.com/docs/web-api/trading/orders/new-order-example#advisor-order-allocation <br>
+Overview - https://www.interactivebrokers.com/en/software/pdfhighlights/PDF-AdvisorAllocations.php | https://www.ibkrguides.com/traderworkstation/pre-trade-allocations.htm <br>
 
 Phase 1 <br>
 GET /iserver/account/allocation/models      (GET IServer models, query this prior to other /fa/model requests below) <br>
