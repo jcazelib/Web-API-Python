@@ -16,12 +16,12 @@ POST /fa/model/summary                      (Request Model Summary) <br>
 POST /iserver/account/{modelCode}/orders    (Place Order) <br>
 
 Phase 2 <br>
-POST /fa/model/rebalance/to-existing-targets (Rebalance to existing targets, not yet documented) <br>
-POST /fa/model/rebalance/to-new-targets      (Rebalance to new targets, not yet documented) <br>
-POST /fa/model/rebalance/to-specific-targets (Rebalance to specific targets, not yet documented) <br>
-POST /fa/model/tws-invest-divest             (TWS-style invest divest, not yet documented) <br>
-POST /fa/is-full-master                      (Check if full master or partial master, not yet documented) <br>
-POST /fa/model/cash-analyzer                 (Cash analyzer, used with multi-currency models not yet documented) <br> 
+POST /fa/model/rebalance/to-existing-targets (Rebalance to existing targets) <br>
+POST /fa/model/rebalance/to-new-targets      (Rebalance to new targets) <br>
+POST /fa/model/rebalance/to-specific-targets (Rebalance to specific targets) <br>
+POST /fa/model/tws-invest-divest             (TWS-style invest divest) <br>
+POST /fa/is-full-master                      (Check if full master or partial master) <br>
+POST /fa/model/cash-analyzer                 (Cash analyzer, used with multi-currency models) <br> 
 
 Example /portfolio requests <br>
 GET /portfolio/{accountId}/positions/{pageId}?model=MP.{modelCode} <br>
