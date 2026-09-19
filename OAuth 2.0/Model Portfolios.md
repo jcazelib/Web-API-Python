@@ -1,6 +1,6 @@
 <b> FA Model Portfolios Documentation <b/> <br>
 Swagger - https://api.ibkr.com/gw/swagger-ui.html#/Trading%20FA%20Model%20Portfolios <br>
-FA Model Portfolios long form docs - https://www.interactivebrokers.com/docs/web-api/trading/financial-advisors/model-portfolios <br> <br>
+Long form docs - https://www.interactivebrokers.com/docs/web-api/trading/financial-advisors/model-portfolios <br> <br>
 
 <b> FA Pre-trade Allocations Documentation <b/> <br>
 Swagger - https://api.ibkr.com/gw/swagger-ui.html#/Trading%20FA%20Allocation%20Management <br>
