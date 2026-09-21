@@ -252,7 +252,7 @@ url = f"{cpapi_url}/iserver/account/allocation/models"              #CALL THIS P
 #====================================================================================================================
 ##### New Rebalance Endpoints 2026 #####
 # method = "POST"
-# url = f'{cpapi_url}/fa/model/rebalance/to-existing-targets'      #Use "rebalanceType": "MODEL" with rebalance orders
+# url = f'{cpapi_url}/fa/model/rebalance/to-existing-targets'      #Model is not balanced let's rebalance it to existing targets. Use "rebalanceType": "MODEL"
 # json_content = {
 #   "reqID": 398899,
 #   "model": f"{modelCode}",
@@ -283,7 +283,7 @@ url = f"{cpapi_url}/iserver/account/allocation/models"              #CALL THIS P
 #                     ]
 #                 }
 #             },
-#             "trgtPercent": 60.00,
+#             "trgtPercent": 60.00,          #Current target e.g. from /fa/model/positions
 #             "rebalanceType": "MODEL"
 #         }
 #     ]
@@ -291,7 +291,7 @@ url = f"{cpapi_url}/iserver/account/allocation/models"              #CALL THIS P
 
 
 # method = "POST"
-# url = f'{cpapi_url}/fa/model/rebalance/to-new-targets'            #Use "rebalanceType": "MODEL" with rebalance orders
+# url = f'{cpapi_url}/fa/model/rebalance/to-new-targets'           #After previous step we have a balanced model, we want to set new targets now. Use "rebalanceType": "TARGET"
 # json_content = {
 #   "reqID": 398896,
 #   "model": f"{modelCode}",
