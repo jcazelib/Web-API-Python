@@ -352,39 +352,7 @@ url = f"{cpapi_url}/iserver/account/allocation/models"              #CALL THIS P
 #   "subscriptionKey": ""
 # }
 
-# method = "POST"
-# url = f"{cpapi_url}/iserver/account/{modelCode}/orders"
-# json_content = {
-#     "orders": [
-#         {
-#             "cashQty": 6046.13,
-#             "orderType": "LMT",
-#             #"useAdaptive": True,
-#             "price": 1,
-#             "tif": "DAY",
-#             "outsideRTH": False,
-#             #"allOrNone": False,
-#             #"acctId": "TestCPAPI4",
-#             "isModel": True,
-#             #"cOID": "dvcpapitest1",
-#             "conidex": "268084",
-#             "side": "BUY",
-#             "jsonPayload": {
-#                 "allocation_profile": {
-#                     "alloc_type": "CASH",
-#                     "allocations": [
-#                         {
-#                             "account": "DUXXXX123",
-#                             "amount": 6046.13
-#                         }
-#                     ]
-#                 }
-#             },
-#             "trgtPercent": 60.00,
-#             "rebalanceType": "MODEL"
-#         }
-#     ]
-# }
+
 
 # method = "POST"
 # url = f'{cpapi_url}/fa/model/tws-invest-divest'           #An account / account_list / group can invest in multiple models in the same request. One can specify one of targetAmt/targetPercent/amtToInvest for each model separately
