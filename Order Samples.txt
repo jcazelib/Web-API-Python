@@ -773,7 +773,7 @@ BODY =
 
 
 ==================================================================================================================
--=-=-=-==---=-=-=-=-======-==-=-=-=-==--=-=-CRYPTOCURRENCY ORDER SAMPLES-==-=-=-===-=-==-=-=-=-----=-=-=-=-==-=-=-==
+-=-=-=-==---=-=-=-=-======-==-=-=-=-==--=-=-CRYPTOCURRENCY ORDER SAMPLES-==-=-=-===-=-==-=-=-=-----=-=-=-=-==-=-=-
 ==================================================================================================================
 1. BUY BTC @ Market
 BODY = 
@@ -846,3 +846,212 @@ BODY =
   ]
 }
 
+
+==================================================================================================================
+-=-=-=-==---=-=-=-=-======-==-=-=-=-==--=-=-FINANCIAL ADVISOR ORDER SAMPLES-==-=-=-===-=-==-=-=-=-----=-=-=-=-==-=
+==================================================================================================================
+A1. Pre-trade allocation orders
+Financial Advisors with IBKR have the ability to use Pre-trade allocations (i.e. Advisor Groups & Profiles) - https://www.interactivebrokers.com/en/software/pdfhighlights/PDF-AdvisorAllocations.php
+Rather than allocating an order to just a single U-account, Financial Advisors may decide to allocate new orders to an Allocation Group or Profile. This will split-up one order across multiple U-accounts (upon execution). This may be useful for Financial Advisors looking to achieve the same average price for a particular position, across multiple customer accounts. In both TWS API & Web API- Financial Advisor accounts have the ability to create pre-trade allocation groups programmatically, as well as place new orders to those allocation groups.
+
+Send an order ticket above, however use URL = POST /iserver/account/{faGroup}/orders instead as the URL. NOTE that the GET /iserver/account/allocation/group endpoint can be used to return a list of valid faGroups. 
+
+
+
+A2. Pre-trade (inline) allocation orders
+json_content1 = {"orders":[{"quantity":200, "conid":76792991, "orderType":"LMT", "price":1, "tif":"GTC", "outsideRTH":true, "side":"BUY", "jsonPayload":
+              {"allocation_profile":{"alloc_type":"SHARE", "allocations": [{"account":"DU123456", "amount":100}, {"account":"DU123457", "amount":100}]}}}]}
+
+json_content1 = {                                  
+  "orders": [
+    {
+      "quantity": 900,
+      "orderType": "LMT",
+      "price": 1,
+      "tif": "DAY",
+      #"outsideRTH": true,
+      "conid": 265598,
+      "side": "BUY",     
+      "jsonPayload": {
+        "allocation_profile": {
+          "alloc_type": "SHARE",
+          "allocations": [
+            {
+              "account": "DU123456",
+              "amount": 300
+            },
+            {            
+              "account": "DU123457",
+              "amount": 300
+            },
+            {
+              "account": "DU123458",
+              "amount": 300                                          
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+
+
+cashQty orders:
+json_content2 = {"orders":[{"cashQty":1200, "conid":76792991, "orderType":"LMT", "price":1, "tif":"GTC", "outsideRTH":true, "side":"BUY", "jsonPayload":
+              {"allocation_profile":{"alloc_type":"CASH", "allocations": [{"account":"DU123456", "amount":800}, {"account":"DU123457", "amount":400}]}}}]}
+
+json_content2 = {                                  
+  "orders": [
+    {
+      "cashQty": 2400,
+      "orderType": "LMT",
+      "price": 1,
+      "tif": "DAY",
+      #"outsideRTH": true,
+      "conid": 265598,
+      "side": "BUY",     
+      "jsonPayload": {
+        "allocation_profile": {
+          "alloc_type": "CASH",
+          "allocations": [
+            {
+              "account": "DU123456",
+              "amount": 800
+            },
+            {            
+              "account": "DU123457",
+              "amount": 800
+            },
+            {
+              "account": "DU123458",
+              "amount": 800                                          
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+
+
+B. Model Portfolio orders
+Send an order ticket above, however use URL = POST /iserver/account/{modelCode}/orders instead as the URL. NOTE that the GET /iserver/account/allocation/models endpoint can be used to return a list of valid modelCodes. 
+
+json_content2 = {                                   #Place Order - Invest single account into a model portfolio
+    "orders": [
+        {
+            "quantity": 110,                        //quantity or cashQty, depending on alloc_type
+            "orderType": "LMT",
+            "price": 1,
+            "tif": "DAY",
+            #"outsideRTH": false,
+            "isModel": true,
+            "conid": "268084",
+            "side": "BUY",
+            "jsonPayload": {
+                "allocation_profile": {
+                    "alloc_type": "SHARE",          //SHARE or CASH
+                    "allocations": [
+                        {
+                            "account": "DU123456",
+                            "amount": 110
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}
+
+
+json_content2 = {                                   #Place Order - Invest multiple accounts into a model portfolio
+  "orders": [
+    {
+      "cashQty": 3000,
+      "orderType": "LMT",
+      "price": 1,
+      "tif": "DAY",
+      #"outsideRTH": true,
+      "isModel": true,
+      "conid": 265598,
+      "side": "BUY",      
+      "jsonPayload": {
+        "allocation_profile": {
+          "alloc_type": "CASH",
+          "allocations": [
+            {
+              "account": "DU123456",
+              "amount": 1000
+            },
+            {            
+              "account": "DU123457",
+              "amount": 1000
+            },
+            {
+              "account": "DU123458",
+              "amount": 1000                                          
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+
+
+json_content3 = {                             #Place Order - Rebalance to existing targets
+    "orders": [
+        {
+            "cashQty": 6046.13,
+            "orderType": "LMT",
+            "price": 1,
+            "tif": "DAY",
+            #"outsideRTH": false,
+            "isModel": true,
+            "conidex": "268084",
+            "side": "BUY",
+            "jsonPayload": {
+                "allocation_profile": {
+                    "alloc_type": "CASH",
+                    "allocations": [
+                        {
+                            "account": "DUO644984",
+                            "amount": 6046.13
+                        }
+                    ]
+                }
+            },
+            "trgtPercent": 60.00,
+            "rebalanceType": "MODEL"
+        }
+    ]
+}
+
+
+json_content4 = {                             #Place Order - Rebalance to new targets
+    "orders": [
+        {
+            "cashQty": 6012.58,
+            "orderType": "LMT",
+            "price": 1,
+            "tif": "DAY",
+            #"outsideRTH": false,
+            "isModel": true,
+            "conid": "268084",
+            "side": "BUY",
+            "jsonPayload": {
+                "allocation_profile": {
+                    "alloc_type": "CASH",
+                    "allocations": [
+                        {
+                            "account": "DUO644984",
+                            "amount": 6012.58
+                        }
+                    ]
+                }
+            },
+            "trgtPercent": 90,
+            "rebalanceType": "TARGET"
+        }
+    ]
+}
