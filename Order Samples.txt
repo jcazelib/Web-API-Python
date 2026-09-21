@@ -937,7 +937,7 @@ json_content2 = {
 B. Model Portfolio orders
 Send an order ticket above, however use URL = POST /iserver/account/{modelCode}/orders instead as the URL. NOTE that the GET /iserver/account/allocation/models endpoint can be used to return a list of valid modelCodes. 
 
-json_content2 = {                                   #Place Order - Invest single account into a model portfolio
+json_content1 = {                                   #Place Order - Invest single account into a model portfolio
     "orders": [
         {
             "quantity": 110,                        //quantity or cashQty, depending on alloc_type
