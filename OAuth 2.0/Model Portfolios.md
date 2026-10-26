@@ -8,6 +8,10 @@ Swagger - https://api.ibkr.com/gw/swagger-ui.html#/Trading%20FA%20Allocation%20M
 Inline allocations - https://www.interactivebrokers.com/docs/web-api/trading/orders/new-order-example#advisor-order-allocation <br>
 Overview - https://www.interactivebrokers.com/en/software/pdfhighlights/PDF-AdvisorAllocations.php | https://www.ibkrguides.com/traderworkstation/pre-trade-allocations.htm <br> <br>
 
+<b> FAQs <b/> <br>
+https://www.interactivebrokers.com/lib/cstools/faq/articles/158260103 <br>
+https://www.interactivebrokers.com/lib/cstools/faq/articles/214534642 <br>
+
 <b> Phase 1 <b/> <br>
 GET /iserver/account/allocation/models      (GET IServer models, query this prior to other /fa/model requests below) <br>
 POST /fa/fa-preset/get                      (Get Model Presets) <br>
