@@ -6,7 +6,7 @@ Overview - https://www.interactivebrokers.com/campus/trading-lessons/tws-model-p
 <b> FA Pre-trade Allocations Documentation <b/> <br>
 Swagger - https://api.ibkr.com/gw/swagger-ui.html#/Trading%20FA%20Allocation%20Management <br>
 Inline allocations - https://www.interactivebrokers.com/docs/web-api/trading/orders/new-order-example#advisor-order-allocation <br>
-Overview - https://www.interactivebrokers.com/en/software/pdfhighlights/PDF-AdvisorAllocations.php | https://www.ibkrguides.com/traderworkstation/pre-trade-allocations.htm <br> <br>
+Overview - https://www.interactivebrokers.com/en/software/pdfhighlights/PDF-AdvisorAllocations.php | https://www.ibkrguides.com/traderworkstation/pre-trade-allocations.htm <br>
 
 <b> FAQs <b/> <br>
 https://www.interactivebrokers.com/lib/cstools/faq/articles/158260103 <br>
